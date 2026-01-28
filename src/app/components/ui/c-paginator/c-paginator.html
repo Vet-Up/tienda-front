@@ -1,0 +1,27 @@
+<nav class="c-paginator" *ngIf="totalPages > 1">
+	<button class="c-paginator__arrow" (click)="goToPage(page - 1)" [disabled]="page === 1" aria-label="Anterior">
+		<svg class="c-paginator__arrow-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg);">
+			<polyline points="9 6 15 12 9 18" />
+		</svg>
+	</button>
+	@for (p of pages; track p; let i = $index) {
+		@if (typeof p === 'number') {
+			<button
+				class="c-paginator__page"
+				[class.active]="p === page"
+				(click)="goToPage(p)"
+				[disabled]="p === page"
+				[attr.aria-current]="p === page ? 'page' : null"
+			>
+				{{ p }}
+			</button>
+		} @else {
+			<span class="c-paginator__dots">&hellip;</span>
+		}
+	}
+	<button class="c-paginator__arrow" (click)="goToPage(page + 1)" [disabled]="page === totalPages" aria-label="Siguiente">
+		<svg class="c-paginator__arrow-svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<polyline points="9 6 15 12 9 18" />
+		</svg>
+	</button>
+</nav>

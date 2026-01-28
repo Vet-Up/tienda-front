@@ -1,0 +1,301 @@
+.c-article-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 20px;
+}
+
+.c-products-center-col {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.products-toolbar--split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 25px;
+  margin-bottom: 0;
+  padding: 0;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.13rem;
+  font-family: var(--mlt-sys-font-family-primary);
+}
+
+.products-toolbar--split * {
+  font-family: var(--mlt-sys-font-family-primary) !important;
+}
+
+.products-toolbar__count {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #222;
+  letter-spacing: 0.01em;
+}
+
+.products-toolbar__actions {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.products-toolbar__filter {
+  background: linear-gradient(135deg, #004580 0%, #0092b4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6em 1.7em 0.6em 1em;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 35px;
+}
+.products-toolbar__filter i {
+  margin-right: 0.5em;
+}
+
+.products-toolbar__filter:hover {
+  outline: 2.5px solid #0092b4;
+  outline-offset: 0.3px;
+}
+
+.products-toolbar__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 0;
+  transition: width 0.3s ease;
+}
+.products-toolbar__search input {
+  width: 100%;
+  padding: 0.4em 0.8em;
+  position: relative;
+  min-width: 260px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+.products-toolbar__search.active {
+  width: 250px;
+  margin-right: 0.5rem;
+}
+
+.products-toolbar__search-close {
+  position: absolute;
+  right: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products-toolbar__search-toggle {
+  background: linear-gradient(135deg, #004580 0%, #0092b4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.custom-dropdown {
+  display: inline-block;
+  min-width: 180px;
+  text-align: center;
+}
+.products-toolbar__sort {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #004580 0%, #0092b4 100%);
+  border-radius: 10px;
+  padding: 5px 16px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  height: 35px;
+  min-width: 180px;
+  margin: 0 0.5rem 0 0;
+
+  span {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  select {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    cursor: not-allowed;
+    padding: 0 0.5em;
+    appearance: none;
+    box-shadow: none;
+  }
+}
+
+.products-toolbar__sort:hover {
+  outline: 2.5px solid #0092b4;
+  outline-offset: 0.3px;
+}
+
+.custom-dropdown__button {
+  background: transparent !important;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: none !important;
+  display: block;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-dropdown__button > span,
+.custom-dropdown__button > ng-container,
+.custom-dropdown__button > *:not(.custom-dropdown__arrow) {
+  display: inline-block;
+  max-width: calc(100% - 2.2em);
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.custom-dropdown__arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: red;
+  pointer-events: none;
+}
+
+.custom-dropdown__button:focus {
+  outline: none;
+  background: transparent !important;
+}
+
+.custom-dropdown__arrow {
+  font-size: 15px;
+  color: red;
+}
+
+.custom-dropdown__menu {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 100%;
+  background: rgba(35, 35, 35, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  margin: 0;
+  padding: 1em 0 1em 0;
+  z-index: 2000;
+  list-style: none;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.custom-dropdown__menu li {
+  padding: 0.48em 1.2em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.15s;
+  border-radius: 13px;
+  margin: 0 1em;
+  position: relative;
+}
+
+.custom-dropdown__menu li.selected {
+  background: linear-gradient(135deg, rgba(0, 69, 128, 0.25) 0%, rgba(0, 146, 180, 0.25) 100%);
+  color: #ffe3c2;
+  border-radius: 13px;
+  margin: 0 1em;
+}
+
+.custom-dropdown__menu li:hover {
+  background: linear-gradient(135deg, #004580 0%, #0092b4 100%);
+  border-radius: 13px;
+  margin: 0 1em;
+}
+
+.custom-dropdown.open .custom-dropdown__button {
+  background: transparent !important;
+}
+
+.count-with-clear {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.results-number {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.btn-clear-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: #f5f7fa;
+  color: #004580;
+  border: 1px solid #c7e0f4;
+  border-radius: 8px;
+  padding: 0.35em 1em 0.35em 0.8em;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.btn-clear-filters:hover {
+  background: #e3f0fa;
+  color: #0077b6;
+  border-color: #90caf9;
+}
+
+.btn-clear-filters i {
+  font-size: 1.15em;
+  margin-right: 0.3em;
+}

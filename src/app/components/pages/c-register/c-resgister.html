@@ -1,0 +1,94 @@
+<div class="register">
+  <div class="register__container">
+    <div class="register__card">
+      <h1 class="register__title">Register</h1>
+
+      @if (error) {
+      <div class="register__error">
+        {{ error }}
+      </div>
+      }
+
+      <form class="register__form" (submit)="onSubmit($event)">
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-person-fill"></i>
+            <input id="username" class="register__input" name="username" type="text" [(ngModel)]="username" required
+              autocomplete="username" placeholder="Username" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-person-fill"></i>
+            <input id="name" class="register__input" name="name" type="text" [(ngModel)]="name" required
+              placeholder="Full name" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-envelope-fill"></i>
+            <input id="email" class="register__input" name="email" type="email" [(ngModel)]="email" required
+              autocomplete="email" placeholder="Email" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-lock-fill"></i>
+            <input id="password" class="register__input" name="password" type="password" [(ngModel)]="password" required
+              autocomplete="new-password" placeholder="Password" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-telephone-fill"></i>
+            <input id="phone" class="register__input" name="phone" type="tel" [(ngModel)]="phone" required
+              placeholder="Phone" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-lock-fill"></i>
+            <input id="confirmPassword" class="register__input" name="confirmPassword" type="password"
+              [(ngModel)]="confirmPassword" required autocomplete="new-password" placeholder="Repeat password" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <input id="birthdate" class="register__input" name="birthdate" type="date" [(ngModel)]="birthdate" required
+              placeholder="Birthdate" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-geo-alt-fill"></i>
+            <input id="address" class="register__input" name="address" type="text" [(ngModel)]="address" required
+              placeholder="Address" />
+          </div>
+        </div>
+
+        <div class="register__field">
+          <div class="register__input-wrapper">
+            <i class="register__icon bi bi-geo-alt-fill"></i>
+            <input id="country" class="register__input" name="country" type="text" [(ngModel)]="country" required
+              placeholder="Country" />
+          </div>
+        </div>
+
+        <div class="register__actions">
+          <button class="register__button" type="submit" [disabled]="loading">Register</button>
+        </div>
+      </form>
+      <div class="register__register-link">
+        Already have an account?
+        <a routerLink="/login">Sign in here</a>
+      </div>
+    </div>
+  </div>
+</div>

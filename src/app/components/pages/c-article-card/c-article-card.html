@@ -1,0 +1,40 @@
+<div class="c-article-card" [routerLink]="['/producto', product.productId]" style="cursor:pointer;">
+    <div class="c-article-card__top-row">
+        <span class="c-article-card__brand">{{ product.brand }}</span>
+    </div>
+
+    <div class="c-article-card__img">
+        <img [src]="'img/' + product.pictureProduct" alt="{{ product.name }}" />
+        @if (product.discount) {
+        <span class="c-article-card__discount-badge">
+            -{{ product.discount | number:'1.0-0' }}%
+        </span>
+        }
+    </div>
+
+    @if (product.badge) {
+    <div class="c-article-card__badge">
+        {{ product.badge }}
+    </div>
+    }
+
+    <div class="c-article-card__category">{{ getCategoryName(product.categoryId) }}</div>
+    <div class="c-article-card__title">{{ product.name }}</div>
+    <div class="c-article-card__desc">{{ product.productDescription }}</div>
+
+    <div class="c-article-card__rating-row">
+        <span class="c-article-card__stars">★ {{ product.averageRating | number:'1.1-1' }}</span>
+        <span class="c-article-card__opinions">({{ product.reviewsCount }})</span>
+    </div>
+
+    <div class="c-article-card__price-row">
+        @if (product.basePrice > product.price) {
+        <span class="c-article-card__price-old">
+            ${{ product.basePrice | number:'1.2-2' }}
+        </span>
+        }
+        <span class="c-article-card__price-main">
+            ${{ product.price | number:'1.2-2' }}
+        </span>
+    </div>
+</div>

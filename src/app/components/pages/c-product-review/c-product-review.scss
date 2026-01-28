@@ -1,0 +1,368 @@
+.product-reviews {
+  position: relative;
+  margin-top: 4rem;
+  padding: 3rem;
+  background: linear-gradient(180deg, #0b1220, #111827);
+  border-radius: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  max-width: 1200px;
+  min-height: 517px;
+  margin: 4rem auto 0 auto;
+
+  h2 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+}
+
+.product-reviews__login-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 41, 59, 0.95);
+  color: #e0e6ed;
+  border: 1.5px solid #1d4ed8;
+  border-radius: 12px;
+  padding: 1.1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.13rem;
+  font-weight: 500;
+  gap: 0.7rem;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+
+  a {
+    color: #38bdf8;
+    text-decoration: underline;
+    font-weight: 600;
+    margin-left: 0.2em;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: #0ea5e9;
+  }
+  i {
+    font-size: 1.4rem;
+    color: #facc15;
+    margin-right: 0.5em;
+  }
+}
+
+.product-reviews__actions {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+
+.product-reviews__add-btn {
+  background: #004580;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b0b8c1;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.icon-btn.edit {
+  &:hover {
+    background: #232b3b;
+    color: #2563eb; 
+  }
+}
+
+.icon-btn.delete {
+  &:hover {
+    background: #232b3b;
+    color: #ff5c5c; 
+  }
+}
+
+.delete-confirm-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+.delete-confirm-content {
+  background: #181f2a;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  text-align: center;
+  color: #fff;
+  min-width: 260px;
+}
+.delete-confirm-content button {
+  margin: 0 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.delete-confirm-content button:first-child {
+  background: #e53935;
+  color: #fff;
+}
+.delete-confirm-content button:last-child {
+  background: #232b3b;
+  color: #fff;
+}
+
+.product-reviews__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.product-reviews__item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+}
+
+.product-reviews__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-reviews__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #232b3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #fff5;
+  border: 1.5px solid #fff2;
+}
+
+.product-reviews__user-name {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #38bdf8;
+  margin-bottom: 0.1rem;
+  margin-left: 0.1rem;
+  letter-spacing: 0.01em;
+}
+
+.product-reviews__stars {
+  display: flex;
+  gap: 0.25rem;
+
+  i {
+    color: #facc15;
+    font-size: 1.15rem;
+  }
+}
+
+.product-reviews__comment {
+  color: #e5e7eb;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.product-reviews__date {
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.product-reviews__pagination {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  button {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover:not(:disabled) {
+      background: #004580;
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    min-width: 44px;
+    text-align: center;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.modal__content {
+  position: relative;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 560px;
+  z-index: 10;
+
+  h3 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 140px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    color: #fff;
+    padding: 12px 14px;
+    font-size: 1rem;
+    resize: vertical;
+    outline: none;
+    margin-bottom: 12px;
+  }
+
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    margin-bottom: 14px;
+  }
+
+  .modal__buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+  }
+
+  .modal__cancel {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
+  .modal__delete {
+    background: #e53935;
+    color: #fff;
+  }
+
+  button:not(.modal__cancel):not(.modal__delete) {
+    background: #004580;
+    color: #fff;
+  }
+}
+
+.star-rating {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 18px;
+  font-size: 1.7rem;
+  justify-content: flex-start;
+
+  i {
+    color: #facc15;
+    cursor: pointer;
+    transition: transform 0.1s;
+    &.active {
+      color: #facc15;
+    }
+    &:hover {
+      transform: scale(1.2);
+      color: #ffd600;
+    }
+  }
+}
+
+.star-label {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-right: 0.7rem;
+}
+
+

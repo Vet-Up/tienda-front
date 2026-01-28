@@ -1,0 +1,17 @@
+@use "sass:map";
+@use '../01_utilities/variables' as utilities;
+
+:root{
+    @each $name, $value in utilities.$colors {
+        --mlt-sys-color-#{$name}: #{$value};
+    }
+}
+
+@each $name, $value in utilities.$colors {
+    .g--color-#{$name} {
+        color: var(--mlt-sys-color-#{$name});
+    }
+    .g--bg-#{$name} {
+        background-color: var(--mlt-sys-color-#{$name});
+    }
+}

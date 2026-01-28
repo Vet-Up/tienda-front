@@ -1,0 +1,78 @@
+<div class="c-article-layout">
+    <div class="c-products-center-col">
+        <div class="products-toolbar products-toolbar--split">
+            <div class="products-toolbar__count count-with-clear">
+                <span class="results-number">{{ totalElements }} results</span>
+                @if (hasActiveFilters) {
+                <button class="btn-clear-filters" (click)="clearAllFilters()">
+                    <i class="bi bi-x-circle"></i> Limpiar filtros
+                </button>
+                }
+            </div>
+
+            <div class="products-toolbar__actions">
+
+                <div class="products-toolbar__search" [class.active]="searchActive">
+                    <input type="text" placeholder="Search products..." [(ngModel)]="searchQuery"
+                        (ngModelChange)="onSearchQueryChange()" />
+                    <button class="products-toolbar__search-close" (click)="toggleSearch()">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </div>
+
+                <button class="products-toolbar__search-toggle" (click)="toggleSearch()">
+                    <i class="bi bi-search"></i>
+                </button>
+
+                <button class="products-toolbar__filter" type="button" (click)="toggleFilters()">
+                    <i class="bi bi-sliders"></i> Filters
+                </button>
+
+                <div class="products-toolbar__sort" (click)="toggleSortDropdown($event)">
+                    <div class="custom-dropdown" [class.open]="sortDropdownOpen">
+                        <button type="button" class="custom-dropdown__button">
+                            @if (sortSelected === null) {
+                            Sort by:
+                            } @else {
+                            {{ sortOptions[sortSelected].label }}
+                            }
+                            <span class="custom-dropdown__arrow"><i class="bi bi-chevron-down"></i></span>
+                        </button>
+                        @if (sortDropdownOpen) {
+                        <ul class="custom-dropdown__menu">
+                            @for (opt of sortOptions; track opt.value) {
+                            <li [class.selected]="$index === sortSelected" (click)="selectSort($index, $event)">
+                                {{ opt.label }}
+                            </li>
+                            }
+                        </ul>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <app-c-filters-sidebar
+          [open]="showFiltersSidebar"
+          (closeSidebar)="closeFiltersSidebar()"
+          (categoriesSelected)="onCategoriesSelected($event)"
+          (priceRangeSelected)="onPriceRangeSelected($event)"
+          [selectedCategories]="selectedCategoryIds"
+          [priceRange]="priceRangeFilter || {min: 0, max: 60}">
+        </app-c-filters-sidebar>
+
+
+        <div class="c-article-list">
+            @for (article of articles; track article.productId) {
+            <app-c-article-card [product]="article" [categories]="categories"></app-c-article-card>
+            }
+        </div>
+        <div class="c-products-paginator-wrapper">
+            <app-c-paginator [page]="page" [pageSize]="pageSize" [totalElements]="totalElements"
+                (pageChange)="onPageChange($event)">
+            </app-c-paginator>
+        </div>
+    </div>
+</div>

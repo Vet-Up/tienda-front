@@ -1,0 +1,14 @@
+@use "sass:map";
+@use '../01_utilities/variables' as utilities;
+
+:root{
+    @each $name, $value in utilities.$shadows {
+        --mlt-sys-shadow-#{$name}: #{$value};
+    }
+}
+
+@each $name, $value in utilities.$shadows {
+    .g--shadow-#{$name} {
+        box-shadow: var(--mlt-sys-shadow-#{$name});
+    }
+}

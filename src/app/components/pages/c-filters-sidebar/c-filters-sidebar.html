@@ -1,0 +1,54 @@
+<aside class="filters-sidebar" [class.open]="open">
+	<div class="filters-sidebar__header">
+		<span>Filters</span>
+		<button class="filters-sidebar__close" (click)="close()" aria-label="Close filters">
+			<i class="bi bi-x"></i>
+		</button>
+	</div>
+
+	<div class="filters-sidebar__content">
+        <div class="filter-section">
+            <label class="filters-sidebar__section-title" >
+                Price
+            </label>
+            <span class="filters-sidebar__price-range-container">
+                <div class="filters-sidebar__price-range-track"></div>
+                <div class="filters-sidebar__price-range-selected"
+                    [style.left.%]="(internalPriceRange.min / 60) * 100"
+                    [style.width.%]="((internalPriceRange.max - internalPriceRange.min) / 60) * 100"></div>
+                <input type="range"
+                    class="filters-sidebar__price-range-slider filters-sidebar__price-range-slider--min"
+                    [min]="0" [max]="60" [(ngModel)]="internalPriceRange.min"
+                    (input)="onMinPriceChange($event)">
+                <input type="range"
+                    class="filters-sidebar__price-range-slider filters-sidebar__price-range-slider--max"
+                    [min]="0" [max]="60" [(ngModel)]="internalPriceRange.max"
+                    (input)="onMaxPriceChange($event)">
+            </span>
+            <div class="filters-sidebar__price-options-label">
+                Between {{ internalPriceRange.min }} € and {{ internalPriceRange.max }} €
+            </div>
+        </div>
+		<div class="filter-section">
+			<div class="filter-header" (click)="toggleCategories()">
+				<span>Categorías</span>
+				<i class="bi bi-chevron-right" [class.rotated]="categoriesOpen"></i>
+			</div>
+
+			@if (categoriesOpen) {
+			<div class="filter-list">
+				@if (categories$ | async; as categories) {
+				@for (cat of categories; track cat.categoryId) {
+				<label>
+					<input type="checkbox" [value]="cat.categoryId"
+						(change)="onCategoryChange(cat.categoryId, $event.target.checked)"
+						[checked]="internalSelectedCategories.includes(cat.categoryId)" />
+					{{ cat.name }}
+				</label>
+				}
+				}
+			</div>
+			}
+		</div>
+	</div>
+</aside>

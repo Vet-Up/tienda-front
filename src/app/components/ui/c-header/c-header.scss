@@ -1,0 +1,191 @@
+.c-header {
+  --header-font-family: var(--mlt-sys-font-family-primary);
+  --header-height: var(--mlt-sys-size-header-height);
+  --header-padding-h: var(--mlt-sys-spacing-6);
+  --header-bg: var(--mlt-sys-color-white);
+  --header-border: var(--mlt-sys-color-gray-400);
+  --header-gap: var(--mlt-sys-spacing-4);
+
+  --header-brand-name-weight: var(--mlt-sys-font-weight-bold);
+  --header-brand-name-size: var(--mlt-sys-font-size-5);
+  --header-brand-name-color: var(--mlt-sys-color-black);
+
+  --header-icon-size: var(--mlt-sys-size-icon-lg);
+  --header-icon-color: var(--mlt-sys-color-black);
+
+  --header-nav-gap: var(--mlt-sys-spacing-8);
+  --header-nav-link-color: var(--mlt-sys-color-primary);
+  --header-nav-link-hover-color: var(--mlt-sys-color-primary-dark);
+  --header-nav-link-weight: var(--mlt-sys-font-weight-semibold);
+  --header-nav-link-size: var(--mlt-sys-font-size-6);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 var(--header-padding-h);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  font-family: var(--header-font-family);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(60, 60, 60, 0.06);
+}
+
+.c-header__left,
+.c-header__center,
+.c-header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--header-gap);
+}
+
+.c-header__brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c-header__brand-logo img {
+  width: 80px;
+  height: auto;
+}
+
+.c-header__brand-name {
+  font-weight: var(--header-brand-name-weight);
+  font-size: var(--header-brand-name-size);
+  color: var(--header-brand-name-color);
+}
+
+.c-header__nav {
+  display: flex;
+  gap: var(--header-nav-gap);
+}
+
+.c-header__nav-link {
+  position: relative;
+  color: #004580;
+  text-decoration: none;
+  font-weight: var(--header-nav-link-weight);
+  font-size: var(--header-nav-link-size);
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.c-header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--header-nav-link-hover-color);
+  transition: width 0.3s ease;
+}
+
+.c-header__nav-link:hover,
+.c-header__nav-link:focus {
+  color: var(--header-nav-link-hover-color);
+}
+
+.c-header__nav-link:hover::after,
+.c-header__nav-link:focus::after {
+  width: 100%;
+}
+
+.c-header__icons {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.c-header__cart,
+.c-header__profile {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.c-header__cart .bi-cart4 {
+  font-size: var(--header-icon-size);
+  transition: color 0.2s;
+}
+
+.c-header__cart:hover .bi-cart4 {
+  color: #004681;
+}
+
+.c-header__profile-avatar .bi {
+  font-size: var(--header-icon-size);
+  color: var(--header-icon-color);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-header__profile:hover .c-header__profile-avatar .bi {
+  color: #004681;
+}
+
+.c-header__profile-wrapper {
+  position: relative;
+}
+
+.c-header__dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.c-header__dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.c-header__dropdown-user {
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.c-header__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  color: #333;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.c-header__dropdown-item:hover {
+  background: #f5f5f5;
+}
+
+.c-header__dropdown-item .bi {
+  flex-shrink: 0;
+}

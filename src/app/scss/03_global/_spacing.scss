@@ -1,0 +1,16 @@
+@use "sass:list";
+@use '../01_utilities/variables' as utilities;
+
+:root{
+    @for $i from 1 through list.length(utilities.$spacings) {
+        $spacing: list.nth(utilities.$spacings, $i);
+        --mlt-sys-spacing-#{$i}:#{$spacing};
+    }
+}
+
+@for $i from 1 through list.length(utilities.$spacings) {
+    $spacing: list.nth(utilities.$spacings, $i);
+    .g--spacing-#{$i}{
+        margin: var(--mlt-sys-spacing-#{$i});
+    }
+}

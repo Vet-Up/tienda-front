@@ -1,0 +1,176 @@
+.login {
+  --login-font-family: var(
+    --mlt-sys-font-family-primary,
+    'Segoe UI',
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif
+  );
+  --login-bg-img: url('../../../../../public/img/backgroundLogin.png');
+  --login-bg-size: cover;
+  --login-bg-pos: center;
+  --login-bg-repeat: no-repeat;
+  --login-card-bg: rgba(255, 255, 255, 0.25);
+  --login-card-blur: blur(10px);
+  --login-card-border: 1px solid rgba(255, 255, 255, 0.3);
+  --login-card-radius: 12px;
+  --login-card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --login-card-padding: 24px;
+  --login-title-size: 40px;
+  --login-title-color: #fff;
+  --login-title-weight: 600;
+  --login-error-bg: rgba(244, 67, 54, 0.9);
+  --login-error-color: #fff;
+  --login-error-radius: 8px;
+  --login-error-padding: 12px;
+  --login-error-margin: 16px;
+  --login-form-gap: 12px;
+  --login-field-gap: 6px;
+  --login-input-height: 38px;
+  --login-input-padding: 0 36px 0 12px;
+  --login-input-border: 1px solid #fff;
+  --login-input-radius: 8px;
+  --login-input-color: #fff;
+  --login-input-size: 16px;
+  --login-input-weight: 500;
+  --login-icon-right: 12px;
+  --login-icon-color: #fff;
+  --login-icon-opacity: 0.8;
+  --login-actions-margin: 8px;
+  --login-btn-height: 40px;
+  --login-btn-radius: 20px;
+  --login-btn-bg: #fff;
+  --login-btn-color: #262b6b;
+  --login-btn-size: 20px;
+  --login-btn-weight: 600;
+  --login-btn-hover-bg: #0b1220;
+  --login-btn-hover-color: #fff;
+
+  font-family: var(--login-font-family);
+  min-height: 100vh;
+  background-image: var(--login-bg-img);
+  background-size: var(--login-bg-size);
+  background-position: var(--login-bg-pos);
+  background-repeat: var(--login-bg-repeat);
+
+  &__container {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: var(--login-card-padding);
+  }
+
+  &__card {
+    width: 100%;
+    max-width: 380px;
+    background: var(--login-card-bg);
+    backdrop-filter: var(--login-card-blur);
+    -webkit-backdrop-filter: var(--login-card-blur);
+    border: var(--login-card-border);
+    border-radius: var(--login-card-radius);
+    box-shadow: var(--login-card-shadow);
+    padding: var(--login-card-padding);
+  }
+
+  &__title {
+    margin: 0 0 16px;
+    font-size: var(--login-title-size);
+    font-weight: var(--login-title-weight);
+    color: var(--login-title-color);
+    text-align: center;
+  }
+
+  &__error {
+    padding: var(--login-error-padding);
+    background-color: var(--login-error-bg);
+    color: var(--login-error-color);
+    border-radius: var(--login-error-radius);
+    margin-bottom: var(--login-error-margin);
+    text-align: center;
+    font-size: 14px;
+  }
+
+  &__form {
+    display: grid;
+    gap: var(--login-form-gap);
+  }
+
+  &__field {
+    display: grid;
+    gap: var(--login-field-gap);
+  }
+
+  &__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    position: absolute;
+    right: var(--login-icon-right);
+    color: var(--login-icon-color);
+    opacity: var(--login-icon-opacity);
+    pointer-events: none;
+  }
+
+  &__input {
+    width: 100%;
+    height: var(--login-input-height);
+    padding: var(--login-input-padding);
+    border: var(--login-input-border);
+    color: var(--login-input-color);
+    border-radius: var(--login-input-radius);
+    font-size: var(--login-input-size);
+    font-weight: var(--login-input-weight);
+    outline: none;
+    background: transparent;
+  }
+
+  &__actions {
+    margin-top: var(--login-actions-margin);
+  }
+
+  &__button {
+    width: 100%;
+    height: var(--login-btn-height);
+    border: none;
+    border-radius: var(--login-btn-radius);
+    background: var(--login-btn-bg);
+    color: var(--login-btn-color);
+    font-size: var(--login-btn-size);
+    font-weight: var(--login-btn-weight);
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      opacity 0.15s ease;
+
+    &:hover {
+      background: var(--login-btn-hover-bg);
+      color: var(--login-btn-hover-color);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.login__register-link {
+  margin-top: 12px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: #ddd;
+    }
+  }
+}

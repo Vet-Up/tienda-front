@@ -1,0 +1,14 @@
+@use "sass:list";
+@use '../01_utilities/variables' as utilidades;
+
+:root {
+  @each $nombre, $fuentes in utilidades.$font-families {
+    --mlt-sys-font-family-#{$nombre}: #{$fuentes};
+  }    
+}
+
+@each $nombre, $fuentes in utilidades.$font-families {
+  .g--font-family-#{$nombre} {
+    font-family: var(--mlt-sys-font-family-#{$nombre});
+  }
+}

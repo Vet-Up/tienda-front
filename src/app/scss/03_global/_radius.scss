@@ -1,0 +1,14 @@
+@use "sass:map";
+@use '../01_utilities/variables' as utilities;
+
+:root{
+    @each $name, $value in utilities.$radius {
+        --mlt-sys-radius-#{$name}: #{$value};
+    }
+}
+
+@each $name, $value in utilities.$radius {
+    .g--radius-#{$name} {
+        border-radius: var(--mlt-sys-radius-#{$name});
+    }
+}

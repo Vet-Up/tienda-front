@@ -1,0 +1,47 @@
+<header class="c-header">
+  <div class="c-header__left">
+    <div class="c-header__brand" (click)="navigateToWelcome()">
+      <div class="c-header__brand-logo">
+        <img src="img/main-logo-recortado.png" alt="VetUp Logo">
+      </div>
+      <div class="c-header__brand-name">VetUp</div>
+    </div>
+  </div>
+
+  <div class="c-header__center">
+    <nav class="c-header__nav">
+      <a class="c-header__nav-link" routerLink="/products">Products</a>
+      <a class="c-header__nav-link" href="#">Online Support</a>
+      <a class="c-header__nav-link" href="#">About Us</a>
+    </nav>
+  </div>
+
+  <div class="c-header__right">
+    <div class="c-header__profile-wrapper">
+      <div class="c-header__icons">
+        <button class="c-header__cart" aria-label="Cart">
+          <i class="bi bi-cart4"></i>
+        </button>
+
+        <button class="c-header__profile" aria-label="User menu" (click)="toggleDropdown()">
+          <span class="c-header__profile-avatar">
+            <i class="bi bi-person-circle"></i>
+          </span>
+        </button>
+      </div>
+
+      @if (isLoggedIn) {
+      <div class="c-header__dropdown" [class.show]="showDropdown">
+        <div class="c-header__dropdown-user">
+          {{ username.toUpperCase() }}
+        </div>
+
+        <button class="c-header__dropdown-item" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          Cerrar Sesión
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+</header>
