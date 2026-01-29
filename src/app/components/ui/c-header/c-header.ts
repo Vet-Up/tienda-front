@@ -11,12 +11,13 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 })
 
 export class CHeader {
-
   showDropdown = false;
   username = '';
   isLoggedIn = false;
+  cartItemCount = 0;
+  private cartSubscription: any;
 
-  constructor(private router: Router, private authService: AuthService, private cartService: CartService,private element: ElementRef) {}
+  constructor(private router: Router, private authService: AuthService, private cartService: CartService, private element: ElementRef) {}
 
   ngOnInit() {
     this.authService.user$.subscribe((user) => {
@@ -28,6 +29,17 @@ export class CHeader {
         this.isLoggedIn = false;
       }
     });
+    this.cartSubscription = this.cartService.cart$.subscribe(cart => {
+      if (cart && cart.cartItems) {
+        this.cartItemCount = cart.cartItems.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      } else {
+        this.cartItemCount = 0;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.cartSubscription) this.cartSubscription.unsubscribe();
   }
 
   navigateToWelcome() {
@@ -41,7 +53,6 @@ export class CHeader {
     }
     this.showDropdown = !this.showDropdown;
   }
-  
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {

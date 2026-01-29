@@ -6,7 +6,7 @@ import { ToastComponent } from '../../ui/toast/toast.component';
 
 @Component({
   selector: 'app-c-login',
-  imports: [FormsModule,RouterLink, ToastComponent],
+  imports: [FormsModule,RouterLink,ToastComponent],
   templateUrl: './c-login.html',
   styleUrl: './c-login.scss',
 })
@@ -23,7 +23,7 @@ export class CLogin {
     if (history.state && history.state['registered']) {
       this.toastMessage = 'Usuario registrado correctamente, inicia sesión';
       this.showToast = true;
-      setTimeout(() => this.showToast = false, 3500);
+      setTimeout(() => this.showToast = false, 4500);
     }
   }
 

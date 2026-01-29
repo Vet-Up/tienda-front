@@ -1,91 +1,100 @@
 <div class="cart-page">
+  @if (showToast) {
+    <app-toast [message]="toastMessage"></app-toast>
+  }
   <div class="cart-page__container">
-    
-    <!-- Cart Section -->
+
     <div class="cart-page__cart">
       <h2 class="cart-page__title">Cart</h2>
-      
+
       <div class="cart-page__items">
-        @for (item of cartItems; track item.id) {
-        <div class="cart-item">
-          <img class="cart-item__image" [src]="'img/' + item.product.pictureProduct">
-
-          <div class="cart-item__details">
-            <h3 class="cart-item__name">{{ item.product.name }}</h3>
+        @if (cartItems.length === 0) {
+          <div class="cart-page__empty-message">
+            <i class="bi bi-cart4 cart-page__empty-icon"></i>
+            <div class="cart-page__empty-title">Your cart is empty</div>
+            <p class="cart-page__empty-desc">You didn't add any item in your cart yet. Browse the website to find amazing deals!</p>
           </div>
-
-          <div class="cart-item__aside">
-            <div class="cart-item__price">
-              {{ item.product.price }} €
+        } @else {
+          @for (item of cartItems; track item.id) {
+            <div class="cart-item">
+              <img class="cart-item__image" [src]="'img/' + item.product.pictureProduct">
+              <div class="cart-item__details">
+                <h3 class="cart-item__name">{{ item.product.name }}</h3>
+              </div>
+              <div class="cart-item__aside">
+                <div class="cart-item__price">
+                  {{ item.product.price }} €
+                </div>
+                <div class="cart-item__controls-group">
+                  <div class="cart-item__controls">
+                    <button type="button" class="qty-btn" (click)="decrement(item)"
+                      [disabled]="item._pending || item.quantity <= 1">-</button>
+                    <span class="qty-value">{{ item.quantity }}</span>
+                    <button type="button" class="qty-btn" (click)="increment(item)"
+                      [disabled]="item._pending || item.quantity >= 20">+</button>
+                  </div>
+                  <div class="cart-item__controls-separator-horizontal"></div>
+                  <button type="button" class="cart-item__action" (click)="removeItem(item)" [disabled]="item._pending"
+                    title="Remove">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
             </div>
-
-            <div class="cart-item__controls">
-              <button type="button" class="qty-btn" (click)="decrement(item)" [disabled]="item._pending || item.quantity <= 1">-</button>
-              <span class="qty-value">{{ item.quantity }}</span>
-              <button type="button" class="qty-btn" (click)="increment(item)" [disabled]="item._pending || item.quantity >= 20">+</button>
-            </div>
-
-            <button type="button" class="cart-item__action" (click)="removeItem(item)" [disabled]="item._pending" title="Remove">
-              <i class="bi bi-trash">
-                Remove
-              </i>
-            </button>
-          </div>
-        </div>
+          }
         }
       </div>
     </div>
-    
-    <!-- Summary Section -->
+
     <div class="cart-page__summary">
       <div class="cart-summary">
         <h2 class="cart-summary__title">Summary</h2>
-        
+
         <div class="cart-summary__content">
-          
+
           <div class="cart-summary__info">
             <span>Total products: {{ totalProducts }}</span>
           </div>
-          
+
           <div class="cart-summary__total">
             <span class="cart-summary__total-label">Total</span>
             <span class="cart-summary__total-value">{{ totalPrice }} €</span>
           </div>
-          
+
           <button class="cart-summary__button" (click)="openAddressModal()">
             Next
             <i class="bi bi-chevron-right"></i>
           </button>
 
-          <!-- Address modal -->
           @if (showAddressModal) {
-            <div class="modal-backdrop">
-              <div class="modal">
-                <h3>Dirección de envío</h3>
-                <form (submit)="acceptAddress($event)">
-                  <label class="single-line">
-                    Dirección de envío
-                    <input class="address-input" type="text" name="address" [(ngModel)]="address" placeholder="Calle, Ciudad, CP, País" required />
-                  </label>
-                  <div class="modal-actions">
-                    <button type="button" class="btn-cancel" (click)="closeAddressModal()">Cancelar</button>
-                    <button type="submit" class="btn-accept" [disabled]="loadingCheckout">Aceptar</button>
-                  </div>
-                  @if (checkoutError) {
-                    <p class="error">{{ checkoutError }}</p>
-                  }
-                  @if (checkoutSuccess) {
-                    <p class="success">{{ checkoutSuccess }}</p>
-                  }
-                </form>
-              </div>
+          <div class="modal-backdrop">
+            <div class="modal">
+              <h3>Shipping address</h3>
+              <form (submit)="acceptAddress($event)">
+                <label class="single-line">
+                  Shipping address
+                  <input class="address-input" type="text" name="address" [(ngModel)]="address"
+                    placeholder="Street, City, ZIP, Country" required />
+                </label>
+                <div class="modal-actions">
+                  <button type="button" class="btn-cancel" (click)="closeAddressModal()">Cancel</button>
+                  <button type="submit" class="btn-accept" [disabled]="loadingCheckout">Accept</button>
+                </div>
+                @if (checkoutError) {
+                <p class="error">{{ checkoutError }}</p>
+                }
+                @if (checkoutSuccess) {
+                <p class="success">{{ checkoutSuccess }}</p>
+                }
+              </form>
             </div>
+          </div>
           }
-          
+
           <div class="cart-summary__divider">
             <span>or</span>
           </div>
-          
+
           <button class="cart-summary__continue" routerLink="/products">
             <i class="bi bi-chevron-left"></i>
             Continue shopping
@@ -93,6 +102,6 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>

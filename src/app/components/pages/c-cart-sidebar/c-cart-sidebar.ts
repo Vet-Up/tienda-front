@@ -16,6 +16,10 @@ import { CommonModule } from '@angular/common';
 export class CCartSidebar implements OnInit, OnDestroy {
   show: boolean = false;
   cart: any = null;
+  get totalItems(): number {
+    if (!this.cart || !this.cart.cartItems) return 0;
+    return this.cart.cartItems.reduce((sum: number, item: any) => sum + (item.quantity || 0), 0);
+  }
   subscription: Subscription | null = null;
 
   constructor(private cartService: CartService, private authService: AuthService, private router: Router) {}
@@ -97,7 +101,7 @@ export class CCartSidebar implements OnInit, OnDestroy {
     console.log('decrement called for', item);
     if (item._pending) return;
     const current = item.quantity || 1;
-    if (current <= 1) return; 
+    if (current <= 1) return;
     item._pending = true;
     item.quantity = Math.max(1, current - 1);
     this.cartService.updateCartItemById(item.id, { quantity: item.quantity }).subscribe({
@@ -129,3 +133,4 @@ export class CCartSidebar implements OnInit, OnDestroy {
     });
   }
 }
+

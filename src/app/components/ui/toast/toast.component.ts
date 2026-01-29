@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-toast',
   imports: [CommonModule],
   templateUrl: './toast.component.html',
+  standalone: true,
   styleUrl: './toast.component.scss'
 })
 export class ToastComponent implements OnInit {

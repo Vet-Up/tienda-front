@@ -21,6 +21,9 @@
       <div class="c-header__icons">
         <button class="c-header__cart" aria-label="Cart" (click)="openSidebar()">
           <i class="bi bi-cart4"></i>
+          @if (cartItemCount > 0) {
+            <span class="c-header__cart-badge">{{ cartItemCount }}</span>
+          }
         </button>
 
         <button class="c-header__profile" aria-label="User menu" (click)="toggleDropdown()">
@@ -42,7 +45,7 @@
 
         <button class="c-header__dropdown-item" (click)="logout()">
           <i class="bi bi-box-arrow-right"></i>
-          Cerrar Sesión
+          Log out
         </button>
       </div>
       }

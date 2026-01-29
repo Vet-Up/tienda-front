@@ -1,5 +1,8 @@
 <div class="login">
   <div class="login__container">
+    @if (showToast) {
+      <app-toast [message]="toastMessage" [duration]="3500"></app-toast>
+    }
     <div class="login__card">
       <h1 class="login__title">Login</h1>
 

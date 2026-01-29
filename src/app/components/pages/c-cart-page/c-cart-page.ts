@@ -7,10 +7,12 @@ import { AuthService } from '../../../core/services/auth-service';
 import { OrderService } from '../../../core/services/order-service';
 import { Subscription } from 'rxjs';
 import { RouterLink } from "@angular/router";
+import { ToastComponent } from '../../ui/toast/toast.component';
 
 @Component({
   selector: 'c-cart-page',
-  imports: [CommonModule, FormsModule, RouterLink],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink, ToastComponent],
   templateUrl: './c-cart-page.html',
   styleUrl: './c-cart-page.scss',
 })
@@ -29,12 +31,15 @@ export class CCartPage implements OnInit {
 
   address: string = '';
 
+  showToast: boolean = false;
+  toastMessage: string = '';
+
   constructor(
     private cartService: CartService,
     private authService: AuthService,
     private orderService: OrderService
   ) {}
-  
+
 
   ngOnInit(): void {
     // subscribe to shared cart observable so totals update automatically
@@ -108,7 +113,7 @@ export class CCartPage implements OnInit {
 
   private loadCart(): void {
     const user = this.authService.getUser();
-    
+
     if (!user || !user.id) {
       this.errorMessage = 'Usuario no autenticado';
       this.isLoading = false;
@@ -154,16 +159,21 @@ export class CCartPage implements OnInit {
         this.loadingCheckout = false;
         this.showAddressModal = false;
         this.address = '';
+        this.toastMessage = '¡Pedido realizado con éxito!';
+        this.showToast = true;
+        setTimeout(() => this.showToast = false, 3500);
         console.log('Checkout response:', order);
         // Refresh cart data on the page
         this.loadCart();
       },
       error: (err) => {
         this.checkoutError = 'Error al realizar el checkout.';
+        this.toastMessage = 'Error al realizar el pedido';
+        this.showToast = true;
+        setTimeout(() => this.showToast = false, 3500);
         console.error(err);
         this.loadingCheckout = false;
       },
     });
   }
 }
-
