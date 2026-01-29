@@ -1,0 +1,48 @@
+@if (show) {
+	<div class="cart-sidebar__backdrop" (click)="close()"></div>
+	<aside class="cart-sidebar">
+		<div class="cart-sidebar__header">
+			<h2>Cart</h2>
+				<button class="cart-sidebar__close" (click)="close()">&times;</button>
+		</div>
+
+		<div class="cart-sidebar__content">
+			@if (cart && cart.cartItems && cart.cartItems.length > 0) {
+				@for (item of cart.cartItems; track item.id) {
+					<div class="cart-sidebar__item">
+						<div class="cart-item__thumb">
+							<img [src]="'img/' + item.product.pictureProduct" alt="{{ item.product.name }}" />
+						</div>
+						<div class="cart-item__body">
+							<div class="cart-item__title">{{ item.product.name }}</div>
+							<div class="cart-item__meta">{{ item.product.brand ? item.product.brand : 'PC (Steam)' }}</div>
+							<div class="cart-item__controls">
+								<button type="button" class="qty-btn" (click)="decrement(item)" [disabled]="item._pending || item.quantity <= 1">-</button>
+									<span class="qty-value">{{ item.quantity }}</span>
+									<button type="button" class="qty-btn" (click)="increment(item)" [disabled]="item._pending || item.quantity >= 20">+</button>
+							</div>
+						</div>
+						<div class="cart-item__aside">
+							<div class="cart-item__price">{{ item.product.price }} €</div>
+							<button type="button" class="cart-item__remove" (click)="removeItem(item)" [disabled]="item._pending" title="Remove">🗑️</button>
+						</div>
+					</div>
+				}
+			}
+
+			@if (!(cart && cart.cartItems && cart.cartItems.length > 0)) {
+				<div class="cart-sidebar__empty">Your cart is empty</div>
+			}
+		</div>
+		<div class="c-cart-sidebar__price">
+			<span>Total:</span>
+			<span class="total-price">{{ cart.totalPrice }} €</span>
+		</div>
+
+		<div class="cart-sidebar__footer">
+			<button class="cart-sidebar__view" (click)="goToCart()">Go to cart</button>
+		</div>
+	</aside>
+}
+
+

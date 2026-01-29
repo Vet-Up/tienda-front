@@ -1,12 +1,5 @@
 .register {
-  --register-font-family: var(
-    --mlt-sys-font-family-primary,
-    'Segoe UI',
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif
-  );
+  --register-font-family: var(--mlt-sys-font-family-primary, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
   --register-bg-img: url('../../../../../public/img/backgroundLogin.png');
   --register-bg-size: cover;
   --register-bg-pos: center;
@@ -144,9 +137,7 @@
     font-size: var(--register-btn-size);
     font-weight: var(--register-btn-weight);
     cursor: pointer;
-    transition:
-      background 0.15s ease,
-      opacity 0.15s ease;
+    transition: background 0.15s ease, opacity 0.15s ease;
 
     &:hover {
       background: var(--register-btn-hover-bg);

@@ -1,0 +1,48 @@
+<div class="orders-container">
+  <h1 class="orders-title">Orders</h1>
+
+  <div class="orders-list">
+    <article class="order-card" *ngFor="let order of orders; let orderIndex = index">
+      <header class="order-header">
+        <div class="order-info">
+          <div class="order-field">
+            <span class="order-label">Pedido</span>
+            <span class="order-value">{{ order.createdAt | date: 'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="order-field">
+            <span class="order-label">Vendido por</span>
+            <span class="order-value">{{ order.user?.name }}</span>
+          </div>
+          <div class="order-field">
+            <span class="order-label">Nº pedido</span>
+            <span class="order-value">{{ order.id }}</span>
+          </div>
+        </div>
+        <button type="button" class="toggle-details" (click)="toggleOrder(order.id)">
+          Ver detalles y seguimiento
+          <span class="arrow" [class.open]="expandedOrderId === order.id">▼</span>
+        </button>
+      </header>
+
+      <div class="order-details-panel" [class.open]="expandedOrderId === order.id">
+        <div class="order-summary">
+          <span>Productos: {{ order.totalProducts }}</span>
+          <span>Total: {{ order.totalPrice | currency: 'EUR':'symbol':'1.2-2' }}</span>
+          <span *ngIf="order.address">Dirección: {{ order.address }}</span>
+        </div>
+
+        <div class="order-items">
+          <div class="order-item" *ngFor="let item of order.orderItems">
+            <div>
+              <p class="item-name">{{ item.product.name }}</p>
+              <p class="item-quantity">Cantidad: {{ item.quantity }}</p>
+            </div>
+            <div class="item-price">
+              {{ item.product.price | currency: 'EUR':'symbol':'1.2-2' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

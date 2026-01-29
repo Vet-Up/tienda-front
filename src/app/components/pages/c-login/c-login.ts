@@ -2,23 +2,30 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService, ILoginResponse } from '../../../core/services/auth-service';
 import { FormsModule } from '@angular/forms';
+import { ToastComponent } from '../../ui/toast/toast.component';
 
 @Component({
   selector: 'app-c-login',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule,RouterLink, ToastComponent],
   templateUrl: './c-login.html',
   styleUrl: './c-login.scss',
 })
 export class CLogin {
+
   username: string = '';
   password: string = '';
   loading: boolean = false;
   error: string = '';
+  showToast: boolean = false;
+  toastMessage: string = '';
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {
+    if (history.state && history.state['registered']) {
+      this.toastMessage = 'Usuario registrado correctamente, inicia sesión';
+      this.showToast = true;
+      setTimeout(() => this.showToast = false, 3500);
+    }
+  }
 
   onSubmit(event: Event) {
     event.preventDefault();

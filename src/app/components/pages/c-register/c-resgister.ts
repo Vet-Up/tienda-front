@@ -5,7 +5,7 @@ import { AuthService } from '../../../core/services/auth-service';
 
 @Component({
   selector: 'app-c-resgister',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule,RouterLink],
   templateUrl: './c-resgister.html',
   styleUrl: './c-resgister.scss',
 })
@@ -23,10 +23,9 @@ export class CResgister {
   loading: boolean = false;
   error: string = '';
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+
 
   onSubmit(event: Event) {
     event.preventDefault();
@@ -45,17 +44,17 @@ export class CResgister {
       country: this.country,
       profilePicture: this.profilePicture,
       birthdate: this.birthdate,
-      password: this.password,
+      password: this.password
     };
-    this.authService.register().subscribe({
+    this.authService.register(data).subscribe({
       next: () => {
         this.loading = false;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { state: { registered: true } });
       },
       error: (err) => {
         this.loading = false;
         this.error = err?.error?.message || 'Error al registrar usuario';
-      },
+      }
     });
   }
 }

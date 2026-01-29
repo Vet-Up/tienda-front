@@ -19,7 +19,7 @@
   <div class="c-header__right">
     <div class="c-header__profile-wrapper">
       <div class="c-header__icons">
-        <button class="c-header__cart" aria-label="Cart">
+        <button class="c-header__cart" aria-label="Cart" (click)="openSidebar()">
           <i class="bi bi-cart4"></i>
         </button>
 
@@ -35,6 +35,10 @@
         <div class="c-header__dropdown-user">
           {{ username.toUpperCase() }}
         </div>
+        <button class="c-header__dropdown-item" routerLink="/orders">
+          <i class="bi bi-bag"></i>
+          Orders
+        </button>
 
         <button class="c-header__dropdown-item" (click)="logout()">
           <i class="bi bi-box-arrow-right"></i>

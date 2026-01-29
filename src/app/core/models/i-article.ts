@@ -2,9 +2,9 @@ export interface IArticle {
   productId: number;
   name: string;
   productDescription: string;
-  basePrice: number; 
-  discount: number; 
-  price: number; 
+  basePrice: number;
+  discount: number;
+  price: number;
   pictureProduct: string;
   brand: string;
   categoryId: number;

@@ -4,14 +4,13 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subject, forkJoin, of } from 'rxjs';
 import { switchMap, takeUntil, catchError } from 'rxjs/operators';
-
 import { ArticleService } from '../../../core/services/article-service';
 import { ReviewService } from '../../../core/services/review-service';
 import { AuthService } from '../../../core/services/auth-service';
 import { CategoryService } from '../../../core/services/category-service';
-import { ICategory } from '../../../core/models/i-category';
-
+import { CartService } from '../../../core/services/cart-service';
 import { IArticle } from '../../../core/models/i-article';
+import { ICategory } from '../../../core/models/i-category';
 import { CProductReview } from '../c-product-review/c-product-review';
 
 @Component({
@@ -34,6 +33,7 @@ export class CProductInfoComponent implements OnInit {
     private reviewService: ReviewService,
     private authService: AuthService,
     private categoryService: CategoryService,
+    private cartService: CartService,
   ) {}
 
   ngOnInit(): void {
@@ -73,5 +73,15 @@ export class CProductInfoComponent implements OnInit {
     }
 
     return stars;
+  }
+
+addToCart() {
+    if (!this.product) return;
+
+    this.cartService.addProduct(this.product.productId, 1)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        error: () => alert('Error al añadir el producto al carrito.'),
+      });
   }
 }

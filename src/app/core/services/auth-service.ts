@@ -20,7 +20,7 @@ export interface IRegisterResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  
+
   private TOKEN_KEY = 'auth_token';
   private Observableuserv = new BehaviorSubject<IUser | null>(null);
   public user$ = this.Observableuserv.asObservable();
@@ -29,10 +29,8 @@ export class AuthService {
 
   constructor(private httpService: HttpService) {}
 
-  register(): Observable<IRegisterResponse> {
-    
-    return this.httpService.post<IRegisterResponse>('/api/auth/register', {});
-
+  register(userData: any): Observable<IRegisterResponse> {
+    return this.httpService.post<IRegisterResponse>('/api/users', userData);
   }
 
   login(username: string, password: string): Observable<ILoginResponse> {
@@ -87,5 +85,5 @@ export class AuthService {
     this.Observableuserv.next(null);
     this.tokenVerified = false;
   }
-  
+
 }

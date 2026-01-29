@@ -1,6 +1,7 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth-service';
+import { CartService } from '../../../core/services/cart-service';
+import { Component, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-c-header',
@@ -8,16 +9,14 @@ import { AuthService } from '../../../core/services/auth-service';
   templateUrl: './c-header.html',
   styleUrl: './c-header.scss',
 })
+
 export class CHeader {
+
   showDropdown = false;
   username = '';
   isLoggedIn = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private element: ElementRef,
-  ) {}
+  constructor(private router: Router, private authService: AuthService, private cartService: CartService,private element: ElementRef) {}
 
   ngOnInit() {
     this.authService.user$.subscribe((user) => {
@@ -42,6 +41,7 @@ export class CHeader {
     }
     this.showDropdown = !this.showDropdown;
   }
+  
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
@@ -50,6 +50,10 @@ export class CHeader {
     if (this.element && !this.element.nativeElement.contains(target)) {
       this.showDropdown = false;
     }
+  }
+
+  openSidebar(): void {
+    this.cartService.openSidebar();
   }
 
   logout(): void {
