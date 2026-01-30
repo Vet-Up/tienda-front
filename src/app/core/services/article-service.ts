@@ -8,7 +8,7 @@ import { IPage } from '../models/i-page';
   providedIn: 'root',
 })
 export class ArticleService {
-  private apiUrl = '/api/products';
+  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/products';
 
   constructor(private http: HttpService) {}
 

@@ -25,7 +25,7 @@ export class AuthService {
   private Observableuserv = new BehaviorSubject<IUser | null>(null);
   public user$ = this.Observableuserv.asObservable();
   private tokenVerified = false;
-  private apiUrl = '/api/auth/login/CUSTOMER';
+  private apiUrl = 'vetup-store-back.preproducciondaw.cip.fpmislata.com/api/auth/login/CUSTOMER';
 
   constructor(private httpService: HttpService) {}
 
