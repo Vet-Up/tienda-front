@@ -18,7 +18,7 @@ export interface ICart {
 })
 export class CartService {
   
-  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/carts';
+  private apiUrl = '/api/carts';
   private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
   sidebarOpen$ = this.sidebarOpenSubject.asObservable();
   // shared cart state observable

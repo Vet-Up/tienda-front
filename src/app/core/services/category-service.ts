@@ -8,7 +8,7 @@ import { ICategory } from '../models/i-category';
 })
 export class CategoryService {
 
-  private apiUrl= 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/categories';
+  private apiUrl= '/api/categories';
 
   constructor(private http: HttpService) { }
 
