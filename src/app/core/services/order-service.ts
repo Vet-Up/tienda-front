@@ -18,4 +18,8 @@ export class OrderService {
   checkout(address: any): Observable<IOrder> {
     return this.http.post<IOrder>(`${this.apiUrl}/checkout`, address);
   }
+
+  hasUserPurchasedProduct(userId: number, productId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/user/${userId}/product/${productId}/purchased`);
+  }
 }

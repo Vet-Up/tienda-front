@@ -11,6 +11,11 @@
     <i class="bi bi-exclamation-circle"></i>
     <span>To write a review you must <a routerLink="/login">log in</a>.</span>
   </div>
+  } @else if (!hasPurchased && !userReview) {
+  <div class="product-reviews__login-message">
+    <i class="bi bi-exclamation-circle"></i>
+    <span>You must purchase this product before writing a review.</span>
+  </div>
   } @else if (!userReview) {
   <button class="product-reviews__add-btn" (click)="openModal()" style="margin-bottom: 1.2rem;">
     <i class="bi bi-pencil"></i> Add review

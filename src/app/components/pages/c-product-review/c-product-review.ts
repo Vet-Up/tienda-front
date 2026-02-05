@@ -1,7 +1,8 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnInit } from '@angular/core';
 import { CreateReviewDto, IReview } from '../../../core/models/i-review';
 import { ReviewService } from '../../../core/services/review-service';
 import { AuthService } from '../../../core/services/auth-service';
+import { OrderService } from '../../../core/services/order-service';
 import { IPage } from '../../../core/models/i-page';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './c-product-review.html',
   styleUrls: ['./c-product-review.scss'],
 })
-export class CProductReview {
+export class CProductReview implements OnInit {
   @Input() productId!: number;
 
   reviews: IReview[] = [];
@@ -24,6 +25,7 @@ export class CProductReview {
 
   userReview: IReview | null = null;
   userId: number | null = null;
+  hasPurchased = false;
 
   newComment = '';
   newRating = 1;
@@ -33,20 +35,28 @@ export class CProductReview {
   constructor(
     private reviewService: ReviewService,
     private authService: AuthService,
+    private orderService: OrderService,
   ) {
     this.userId = this.authService.getUser()?.id ?? null;
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['productId'] && this.productId) {
+  ngOnInit(): void {
+    if (this.productId) {
+      this.checkIfUserHasPurchased();
       this.loadReviews();
       this.loadUserReview();
     }
   }
 
-  // --------------------------
-  // REVIEWS
-  // --------------------------
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['productId'] && this.productId) {
+      this.checkIfUserHasPurchased();
+      this.loadReviews();
+      this.loadUserReview();
+    }
+  }
+
+
   private loadReviews() {
     this.reviewService
       .getReviewsByProductId(this.productId, this.reviewsPage, this.reviewsPageSize)
@@ -71,9 +81,6 @@ export class CProductReview {
     }
   }
 
-  // --------------------------
-  // USER REVIEW
-  // --------------------------
   private loadUserReview() {
     if (!this.userId) return;
 
@@ -112,7 +119,6 @@ export class CProductReview {
   saveReview() {
     if (!this.userId) return;
 
-    // SI EXISTE RESEÑA: editar
     if (this.userReview) {
       const updatedReview: IReview = {
         ...this.userReview,
@@ -129,7 +135,6 @@ export class CProductReview {
       return;
     }
 
-    // SI NO EXISTE RESEÑA: crear
     const review: CreateReviewDto = {
       productId: this.productId,
       userId: this.userId,
@@ -158,6 +163,22 @@ export class CProductReview {
       this.newRating = 5;
       this.loadReviews();
       this.closeModal();
+    });
+  }
+
+  private checkIfUserHasPurchased() {
+    if (!this.userId) {
+      this.hasPurchased = false;
+      return;
+    }
+
+    this.orderService.hasUserPurchasedProduct(this.userId, this.productId).subscribe({
+      next: (purchased) => {
+        this.hasPurchased = purchased;
+      },
+      error: () => {
+        this.hasPurchased = false;
+      },
     });
   }
 }
