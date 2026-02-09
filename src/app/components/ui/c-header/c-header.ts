@@ -27,6 +27,7 @@ export class CHeader {
       } else {
         this.username = '';
         this.isLoggedIn = false;
+        this.cartItemCount = 0;
       }
     });
     this.cartSubscription = this.cartService.cart$.subscribe(cart => {
@@ -69,6 +70,7 @@ export class CHeader {
 
   logout(): void {
     this.authService.logout();
+    this.cartService.clearCart();
     this.showDropdown = false;
     this.router.navigate(['/main']);
   }

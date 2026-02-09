@@ -1,12 +1,5 @@
 .login {
-  --login-font-family: var(
-    --mlt-sys-font-family-primary,
-    'Segoe UI',
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif
-  );
+  --login-font-family: var(--mlt-sys-font-family-primary);
   --login-bg-img: url('../../../../../public/img/backgroundLogin.png');
   --login-bg-size: cover;
   --login-bg-pos: center;
@@ -14,38 +7,38 @@
   --login-card-bg: rgba(255, 255, 255, 0.25);
   --login-card-blur: blur(10px);
   --login-card-border: 1px solid rgba(255, 255, 255, 0.3);
-  --login-card-radius: 12px;
-  --login-card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  --login-card-padding: 24px;
-  --login-title-size: 40px;
-  --login-title-color: #fff;
-  --login-title-weight: 600;
-  --login-error-bg: rgba(244, 67, 54, 0.9);
-  --login-error-color: #fff;
-  --login-error-radius: 8px;
-  --login-error-padding: 12px;
-  --login-error-margin: 16px;
-  --login-form-gap: 12px;
-  --login-field-gap: 6px;
+  --login-card-radius: var(--mlt-sys-radius-md);
+  --login-card-shadow: var(--mlt-sys-shadow-lg);
+  --login-card-padding: var(--mlt-sys-spacing-5);
+  --login-title-size: var(--mlt-sys-font-size-11);
+  --login-title-color: var(--mlt-sys-color-white);
+  --login-title-weight: var(--mlt-sys-font-weight-semibold);
+  --login-error-bg: var(--mlt-sys-color-error-bg);
+  --login-error-color: var(--mlt-sys-color-white);
+  --login-error-radius: var(--mlt-sys-radius-md);
+  --login-error-padding: var(--mlt-sys-spacing-2);
+  --login-error-margin: var(--mlt-sys-spacing-3);
+  --login-form-gap: var(--mlt-sys-spacing-2);
+  --login-field-gap: var(--mlt-sys-spacing-1);
   --login-input-height: 38px;
-  --login-input-padding: 0 36px 0 12px;
-  --login-input-border: 1px solid #fff;
-  --login-input-radius: 8px;
-  --login-input-color: #fff;
-  --login-input-size: 16px;
-  --login-input-weight: 500;
-  --login-icon-right: 12px;
-  --login-icon-color: #fff;
+  --login-input-padding: 0 36px 0 var(--mlt-sys-spacing-2);
+  --login-input-border: 1px solid var(--mlt-sys-color-white);
+  --login-input-radius: var(--mlt-sys-radius-md);
+  --login-input-color: var(--mlt-sys-color-white);
+  --login-input-size: var(--mlt-sys-font-size-4);
+  --login-input-weight: var(--mlt-sys-font-weight-medium);
+  --login-icon-right: var(--mlt-sys-spacing-2);
+  --login-icon-color: var(--mlt-sys-color-white);
   --login-icon-opacity: 0.8;
-  --login-actions-margin: 8px;
+  --login-actions-margin: var(--mlt-sys-spacing-2);
   --login-btn-height: 40px;
   --login-btn-radius: 20px;
-  --login-btn-bg: #fff;
+  --login-btn-bg: var(--mlt-sys-color-white);
   --login-btn-color: #262b6b;
-  --login-btn-size: 20px;
-  --login-btn-weight: 600;
-  --login-btn-hover-bg: #0b1220;
-  --login-btn-hover-color: #fff;
+  --login-btn-size: var(--mlt-sys-font-size-6);
+  --login-btn-weight: var(--mlt-sys-font-weight-semibold);
+  --login-btn-hover-bg: var(--mlt-sys-color-background-dark);
+  --login-btn-hover-color: var(--mlt-sys-color-white);
 
   font-family: var(--login-font-family);
   min-height: 100vh;
@@ -159,18 +152,18 @@
 }
 
 .login__register-link {
-  margin-top: 12px;
+  margin-top: var(--mlt-sys-spacing-2);
   text-align: center;
-  color: #fff;
-  font-size: 14px;
+  color: var(--mlt-sys-color-white);
+  font-size: var(--mlt-sys-font-size-3);
 
   a {
-    color: #fff;
+    color: var(--mlt-sys-color-white);
     text-decoration: underline;
     cursor: pointer;
 
     &:hover {
-      color: #ddd;
+      color: var(--mlt-sys-color-gray-200);
     }
   }
 }

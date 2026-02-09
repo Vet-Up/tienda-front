@@ -1,94 +1,159 @@
-.c-paginator__arrow-svg {
-	display: block;
-	margin: auto;
-	color: #111;
-	transition: color 0.2s;
-}
-
-.c-paginator__arrow:not(:disabled):hover .c-paginator__arrow-svg {
-	color: #fff;
-}
-
 .c-paginator {
+	// Variables CSS custom properties
+	--c-paginator-gap: var(--mlt-sys-spacing-1);
+	--c-paginator-margin-top: var(--mlt-sys-spacing-5);
+	--c-paginator-margin-bottom: var(--mlt-sys-spacing-5);
+	--c-paginator-font-size: 1.1rem;
+
+	// Arrow variables
+	--c-paginator-arrow-bg: var(--mlt-sys-color-white);
+	--c-paginator-arrow-color: #222;
+	--c-paginator-arrow-border-width: 1.5px;
+	--c-paginator-arrow-border-color: #e0e0e0;
+	--c-paginator-arrow-border-radius: 50%;
+	--c-paginator-arrow-size: 40px;
+	--c-paginator-arrow-font-size: 1.3rem;
+	--c-paginator-arrow-transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+	--c-paginator-arrow-shadow: 0 2px 8px 0 rgba(60, 60, 60, 0.06);
+	--c-paginator-arrow-disabled-opacity: 0.4;
+	--c-paginator-arrow-disabled-bg: #f5f5f5;
+	--c-paginator-arrow-disabled-color: #bbb;
+	--c-paginator-arrow-hover-bg: var(--mlt-sys-color-primary);
+	--c-paginator-arrow-hover-border-color: var(--mlt-sys-color-primary);
+	--c-paginator-arrow-hover-color: var(--mlt-sys-color-white);
+
+	// Arrow SVG variables
+	--c-paginator-arrow-svg-color: #111;
+	--c-paginator-arrow-svg-hover-color: var(--mlt-sys-color-white);
+	--c-paginator-arrow-svg-transition: color 0.2s;
+
+	// Page variables
+	--c-paginator-page-bg: transparent;
+	--c-paginator-page-border: none;
+	--c-paginator-page-border-radius: 0;
+	--c-paginator-page-size: 40px;
+	--c-paginator-page-font-size: 1.1rem;
+	--c-paginator-page-color: #222;
+	--c-paginator-page-transition: color 0.2s;
+	--c-paginator-page-margin: 0 2px;
+	--c-paginator-page-shadow: none;
+	--c-paginator-page-font-weight: 500;
+	--c-paginator-page-active-bg: var(--mlt-sys-color-white);
+	--c-paginator-page-active-color: #222;
+	--c-paginator-page-active-font-weight: bold;
+	--c-paginator-page-active-border-radius: 50%;
+	--c-paginator-page-active-border-width: 2px;
+	--c-paginator-page-active-border-color: #e0e0e0;
+	--c-paginator-page-active-shadow: 0 2px 8px 0 rgba(60, 60, 60, 0.06);
+	--c-paginator-page-hover-bg: var(--mlt-sys-color-primary);
+	--c-paginator-page-hover-border-radius: 50%;
+	--c-paginator-page-hover-color: var(--mlt-sys-color-white);
+	--c-paginator-page-hover-border-width: 1.5px;
+	--c-paginator-page-hover-border-color: var(--mlt-sys-color-primary);
+	--c-paginator-page-hover-shadow: 0 2px 8px 0 rgba(60, 60, 60, 0.06);
+	--c-paginator-page-disabled-opacity: 0.7;
+
+	// Dots variables
+	--c-paginator-dots-color: #bdbdbd;
+	--c-paginator-dots-font-size: 1.2rem;
+	--c-paginator-dots-margin: 0 6px;
+
+	// Estilos del contenedor
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 0.5rem;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
-	font-size: 1.1rem;
+	gap: var(--c-paginator-gap);
+	margin-top: var(--c-paginator-margin-top);
+	margin-bottom: var(--c-paginator-margin-bottom);
+	font-size: var(--c-paginator-font-size);
 }
 
 .c-paginator__arrow {
-	background: #fff;
-	color: #222;
-	border: 1.5px solid #e0e0e0;
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
+	background: var(--c-paginator-arrow-bg);
+	color: var(--c-paginator-arrow-color);
+	border: var(--c-paginator-arrow-border-width) solid var(--c-paginator-arrow-border-color);
+	border-radius: var(--c-paginator-arrow-border-radius);
+	width: var(--c-paginator-arrow-size);
+	height: var(--c-paginator-arrow-size);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 1.3rem;
+	font-size: var(--c-paginator-arrow-font-size);
 	cursor: pointer;
-	transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
-	box-shadow: 0 2px 8px 0 rgba(60,60,60,0.06);
+	transition: var(--c-paginator-arrow-transition);
+	box-shadow: var(--c-paginator-arrow-shadow);
 }
 
 .c-paginator__arrow i {
-	color: #111;
+	color: var(--c-paginator-arrow-svg-color);
 }
+
 .c-paginator__arrow:disabled {
-	opacity: 0.4;
+	opacity: var(--c-paginator-arrow-disabled-opacity);
 	cursor: not-allowed;
-	background: #f5f5f5;
-	color: #bbb;
+	background: var(--c-paginator-arrow-disabled-bg);
+	color: var(--c-paginator-arrow-disabled-color);
 }
+
 .c-paginator__arrow:not(:disabled):hover {
-	background: var(--mlt-sys-color-primary);
-	border-color: var(--mlt-sys-color-primary);
-	color: #fff;
+	background: var(--c-paginator-arrow-hover-bg);
+	border-color: var(--c-paginator-arrow-hover-border-color);
+	color: var(--c-paginator-arrow-hover-color);
+}
+
+.c-paginator__arrow-svg {
+	display: block;
+	margin: auto;
+	color: var(--c-paginator-arrow-svg-color);
+	transition: var(--c-paginator-arrow-svg-transition);
+}
+
+.c-paginator__arrow:not(:disabled):hover .c-paginator__arrow-svg {
+	color: var(--c-paginator-arrow-svg-hover-color);
 }
 
 .c-paginator__page {
-	background: transparent;
-	border: none;
-	border-radius: 0;
-	width: 40px;
-	height: 40px;
-	font-size: 1.1rem;
-	color: #222;
+	background: var(--c-paginator-page-bg);
+	border: var(--c-paginator-page-border);
+	border-radius: var(--c-paginator-page-border-radius);
+	width: var(--c-paginator-page-size);
+	height: var(--c-paginator-page-size);
+	font-size: var(--c-paginator-page-font-size);
+	color: var(--c-paginator-page-color);
 	cursor: pointer;
-	transition: color 0.2s;
-	margin: 0 2px;
-	box-shadow: none;
-	font-weight: 500;
+	transition: var(--c-paginator-page-transition);
+	margin: var(--c-paginator-page-margin);
+	box-shadow: var(--c-paginator-page-shadow);
+	font-weight: var(--c-paginator-page-font-weight);
 }
+
 .c-paginator__page.active,
 .c-paginator__page[aria-current='page'] {
-	background: #fff;
-	color: #222;
-	font-weight: bold;
-	border-radius: 50%;
-	border: 2px solid #e0e0e0;
-	box-shadow: 0 2px 8px 0 rgba(60,60,60,0.06);
+	background: var(--c-paginator-page-active-bg);
+	color: var(--c-paginator-page-active-color);
+	font-weight: var(--c-paginator-page-active-font-weight);
+	border-radius: var(--c-paginator-page-active-border-radius);
+	border: var(--c-paginator-page-active-border-width) solid var(--c-paginator-page-active-border-color);
+	box-shadow: var(--c-paginator-page-active-shadow);
 }
+
 .c-paginator__page:not(.active):not([aria-current='page']):not(:disabled):hover {
-	background: var(--mlt-sys-color-primary);
-	border-radius: 50%;
-	color: #fff;
-	border: 1.5px solid var(--mlt-sys-color-primary);
-	box-shadow: 0 2px 8px 0 rgba(60,60,60,0.06);
+	background: var(--c-paginator-page-hover-bg);
+	border-radius: var(--c-paginator-page-hover-border-radius);
+	color: var(--c-paginator-page-hover-color);
+	border: var(--c-paginator-page-hover-border-width) solid var(--c-paginator-page-hover-border-color);
+	box-shadow: var(--c-paginator-page-hover-shadow);
 	text-decoration: none;
 }
+
 .c-paginator__page:disabled {
-	opacity: 0.7;
+	opacity: var(--c-paginator-page-disabled-opacity);
 	cursor: not-allowed;
 }
 
 .c-paginator__dots {
-	color: #bdbdbd;
-	font-size: 1.2rem;
-	margin: 0 6px;
+	color: var(--c-paginator-dots-color);
+	font-size: var(--c-paginator-dots-font-size);
+	margin: var(--c-paginator-dots-margin);
 	user-select: none;
 }

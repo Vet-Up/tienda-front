@@ -69,4 +69,8 @@ export class CartService {
   closeSidebar() {
     this.sidebarOpenSubject.next(false);
   }
+
+  clearCart() {
+    this.cartSubject.next(null);
+  }
 }

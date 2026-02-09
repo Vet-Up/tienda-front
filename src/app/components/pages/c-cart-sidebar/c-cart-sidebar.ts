@@ -21,6 +21,7 @@ export class CCartSidebar implements OnInit, OnDestroy {
     return this.cart.cartItems.reduce((sum: number, item: any) => sum + (item.quantity || 0), 0);
   }
   subscription: Subscription | null = null;
+  private cartSubscription: Subscription | null = null;
 
   constructor(private cartService: CartService, private authService: AuthService, private router: Router) {}
 
@@ -30,10 +31,17 @@ export class CCartSidebar implements OnInit, OnDestroy {
       this.show = open;
       if (open) this.loadCart();
     });
+    
+    this.cartSubscription = this.cartService.cart$.subscribe((cart) => {
+      if (!cart) {
+        this.cart = null;
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
+    this.cartSubscription?.unsubscribe();
     if (this._clickListener) document.removeEventListener('click', this._clickListener);
   }
 
@@ -41,7 +49,10 @@ export class CCartSidebar implements OnInit, OnDestroy {
     const user = this.authService.getUser();
     if (!user || !user.id) return;
     this.cartService.getCartByUserId(user.id).subscribe({
-      next: (cart) => (this.cart = cart),
+      next: (cart) => {
+        this.cart = cart;
+        console.log('Cart loaded:', this.cart);
+      },
       error: () => (this.cart = null),
     });
   }

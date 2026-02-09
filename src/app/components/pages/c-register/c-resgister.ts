@@ -22,6 +22,7 @@ export class CResgister {
   confirmPassword: string = '';
   loading: boolean = false;
   error: string = '';
+  validationErrors: { [key: string]: string } = {};
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -30,6 +31,7 @@ export class CResgister {
   onSubmit(event: Event) {
     event.preventDefault();
     this.error = '';
+    this.validationErrors = {};
     if (this.password !== this.confirmPassword) {
       this.error = 'Las contraseñas no coinciden';
       return;
@@ -53,7 +55,14 @@ export class CResgister {
       },
       error: (err) => {
         this.loading = false;
-        this.error = err?.error?.message || 'Error al registrar usuario';
+        if (err?.error?.validationErrors) {
+          this.validationErrors = err.error.validationErrors;
+          // Mostrar solo el primer error de validación
+          const firstError = Object.values(this.validationErrors)[0];
+          this.error = firstError as string;
+        } else {
+          this.error = err?.error?.message || 'Error al registrar usuario';
+        }
       }
     });
   }

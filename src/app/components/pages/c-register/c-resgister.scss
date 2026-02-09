@@ -1,5 +1,5 @@
 .register {
-  --register-font-family: var(--mlt-sys-font-family-primary, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
+  --register-font-family: var(--mlt-sys-font-family-primary);
   --register-bg-img: url('../../../../../public/img/backgroundLogin.png');
   --register-bg-size: cover;
   --register-bg-pos: center;
@@ -7,38 +7,38 @@
   --register-card-bg: rgba(255, 255, 255, 0.25);
   --register-card-blur: blur(10px);
   --register-card-border: 1px solid rgba(255, 255, 255, 0.3);
-  --register-card-radius: 12px;
-  --register-card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  --register-card-padding: 24px;
-  --register-title-size: 40px;
-  --register-title-color: #fff;
-  --register-title-weight: 600;
-  --register-error-bg: rgba(244, 67, 54, 0.9);
-  --register-error-color: #fff;
-  --register-error-radius: 8px;
-  --register-error-padding: 12px;
-  --register-error-margin: 16px;
-  --register-form-gap: 12px;
-  --register-field-gap: 6px;
+  --register-card-radius: var(--mlt-sys-radius-md);
+  --register-card-shadow: var(--mlt-sys-shadow-lg);
+  --register-card-padding: var(--mlt-sys-spacing-5);
+  --register-title-size: var(--mlt-sys-font-size-11);
+  --register-title-color: var(--mlt-sys-color-white);
+  --register-title-weight: var(--mlt-sys-font-weight-semibold);
+  --register-error-bg: var(--mlt-sys-color-error-bg);
+  --register-error-color: var(--mlt-sys-color-white);
+  --register-error-radius: var(--mlt-sys-radius-md);
+  --register-error-padding: var(--mlt-sys-spacing-2);
+  --register-error-margin: var(--mlt-sys-spacing-3);
+  --register-form-gap: var(--mlt-sys-spacing-2);
+  --register-field-gap: var(--mlt-sys-spacing-1);
   --register-input-height: 38px;
-  --register-input-padding: 0 36px 0 12px;
-  --register-input-border: 1px solid #fff;
-  --register-input-radius: 8px;
-  --register-input-color: #fff;
-  --register-input-size: 16px;
-  --register-input-weight: 500;
-  --register-icon-right: 12px;
-  --register-icon-color: #fff;
+  --register-input-padding: 0 36px 0 var(--mlt-sys-spacing-2);
+  --register-input-border: 1px solid var(--mlt-sys-color-white);
+  --register-input-radius: var(--mlt-sys-radius-md);
+  --register-input-color: var(--mlt-sys-color-white);
+  --register-input-size: var(--mlt-sys-font-size-4);
+  --register-input-weight: var(--mlt-sys-font-weight-medium);
+  --register-icon-right: var(--mlt-sys-spacing-2);
+  --register-icon-color: var(--mlt-sys-color-white);
   --register-icon-opacity: 0.8;
-  --register-actions-margin: 8px;
+  --register-actions-margin: var(--mlt-sys-spacing-2);
   --register-btn-height: 40px;
   --register-btn-radius: 20px;
-  --register-btn-bg: #fff;
+  --register-btn-bg: var(--mlt-sys-color-white);
   --register-btn-color: #262b6b;
-  --register-btn-size: 20px;
-  --register-btn-weight: 600;
-  --register-btn-hover-bg: #0b1220;
-  --register-btn-hover-color: #fff;
+  --register-btn-size: var(--mlt-sys-font-size-6);
+  --register-btn-weight: var(--mlt-sys-font-weight-semibold);
+  --register-btn-hover-bg: var(--mlt-sys-color-background-dark);
+  --register-btn-hover-color: var(--mlt-sys-color-white);
 
   font-family: var(--register-font-family);
   min-height: 100vh;
@@ -160,16 +160,26 @@
   pointer-events: none;
 }
 
+.register__field-error {
+  margin-top: var(--mlt-sys-spacing-1);
+  font-size: var(--mlt-sys-font-size-2);
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: var(--mlt-sys-spacing-1) var(--mlt-sys-spacing-2);
+  border-radius: var(--mlt-sys-radius-sm);
+  font-weight: var(--mlt-sys-font-weight-medium);
+}
+
 .register__register-link {
-  margin-top: 16px;
+  margin-top: var(--mlt-sys-spacing-3);
   text-align: center;
-  color: #fff;
-  font-size: 14px;
+  color: var(--mlt-sys-color-white);
+  font-size: var(--mlt-sys-font-size-3);
 
   a {
-    color: white;
+    color: var(--mlt-sys-color-white);
     text-decoration: underline;
-    margin-left: 4px;
+    margin-left: var(--mlt-sys-spacing-1);
 
     &:hover {
       color: #ffa500;

@@ -84,6 +84,10 @@ export class AuthService {
     localStorage.removeItem(this.TOKEN_KEY);
     this.Observableuserv.next(null);
     this.tokenVerified = false;
+    // Limpiar el carrito al hacer logout
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('user-logout'));
+    }
   }
 
 }

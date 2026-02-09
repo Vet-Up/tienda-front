@@ -1,368 +1,564 @@
 .product-reviews {
+  // Main container variables
+  --product-reviews-margin-top: var(--mlt-sys-spacing-10);
+  --product-reviews-padding: var(--mlt-sys-spacing-8);
+  --product-reviews-bg: linear-gradient(180deg, #0b1220, #111827);
+  --product-reviews-radius: 1rem;
+  --product-reviews-font: var(--mlt-sys-font-family-primary);
+  --product-reviews-max-width: 1200px;
+  --product-reviews-min-height: 517px;
+
+  // Title (h2) variables
+  --product-reviews-title-color: var(--mlt-sys-color-white);
+  --product-reviews-title-size: var(--mlt-sys-font-size-10);
+  --product-reviews-title-weight: var(--mlt-sys-font-weight-bold);
+  --product-reviews-title-margin: var(--mlt-sys-spacing-6);
+
+  // Login message variables
+  --product-reviews-message-bg: rgba(30, 41, 59, 0.95);
+  --product-reviews-message-color: #e0e6ed;
+  --product-reviews-message-border: #1d4ed8;
+  --product-reviews-message-radius: var(--mlt-sys-radius-lg);
+  --product-reviews-message-padding: var(--mlt-sys-spacing-3);
+  --product-reviews-message-margin: var(--mlt-sys-spacing-4);
+  --product-reviews-message-size: var(--mlt-sys-font-size-5);
+  --product-reviews-message-weight: var(--mlt-sys-font-weight-medium);
+  --product-reviews-message-gap: var(--mlt-sys-spacing-2);
+  --product-reviews-message-shadow: var(--mlt-sys-shadow-sm);
+
+  // Login message link variables
+  --product-reviews-link-color: #38bdf8;
+  --product-reviews-link-weight: var(--mlt-sys-font-weight-semibold);
+  --product-reviews-link-margin: 0.2em;
+  --product-reviews-link-hover: #0ea5e9;
+
+  // Login message icon variables
+  --product-reviews-icon-size: var(--mlt-sys-font-size-6);
+  --product-reviews-icon-color: #facc15;
+  --product-reviews-icon-margin: 0.5em;
+
+  // Actions variables
+  --product-reviews-actions-gap: var(--mlt-sys-spacing-1);
+
+  // Add button variables
+  --product-reviews-btn-bg: var(--mlt-sys-color-primary);
+  --product-reviews-btn-color: var(--mlt-sys-color-white);
+  --product-reviews-btn-radius: var(--mlt-sys-radius-full);
+  --product-reviews-btn-padding: var(--mlt-sys-spacing-2);
+  --product-reviews-btn-weight: var(--mlt-sys-font-weight-semibold);
+  --product-reviews-btn-gap: var(--mlt-sys-spacing-2);
+  --product-reviews-btn-hover: #1d4ed8;
+
+  // List variables
+  --product-reviews-list-gap: var(--mlt-sys-spacing-6);
+  --product-reviews-list-max-width: 1100px;
+
+  // Item variables
+  --product-reviews-item-bg: rgba(255, 255, 255, 0.04);
+  --product-reviews-item-border: rgba(255, 255, 255, 0.08);
+  --product-reviews-item-radius: var(--mlt-sys-radius-lg);
+  --product-reviews-item-padding: var(--mlt-sys-spacing-4);
+  --product-reviews-item-shadow: var(--mlt-sys-shadow-lg);
+  --product-reviews-item-gap: var(--mlt-sys-spacing-3);
+  --product-reviews-item-hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+  // Header variables
+  --product-reviews-header-gap: var(--mlt-sys-spacing-3);
+  --product-reviews-header-margin: var(--mlt-sys-spacing-1);
+
+  // Avatar variables
+  --product-reviews-avatar-size: 40px;
+  --product-reviews-avatar-radius: var(--mlt-sys-radius-full);
+  --product-reviews-avatar-bg: #232b3b;
+  --product-reviews-avatar-size-font: var(--mlt-sys-font-size-7);
+  --product-reviews-avatar-color: #fff5;
+  --product-reviews-avatar-border: #fff2;
+
+  // User name variables
+  --product-reviews-name-size: var(--mlt-sys-font-size-5);
+  --product-reviews-name-weight: var(--mlt-sys-font-weight-semibold);
+  --product-reviews-name-color: #38bdf8;
+  --product-reviews-name-margin: 0.1rem;
+  --product-reviews-name-spacing: 0.01em;
+
+  // Stars variables
+  --product-reviews-stars-gap: var(--mlt-sys-spacing-05);
+  --product-reviews-star-color: #facc15;
+  --product-reviews-star-size: var(--mlt-sys-font-size-5);
+
+  // Comment variables
+  --product-reviews-comment-color: #e5e7eb;
+  --product-reviews-comment-size: var(--mlt-sys-font-size-5);
+  --product-reviews-comment-line: 1.5;
+
+  // Date variables
+  --product-reviews-date-size: var(--mlt-sys-font-size-2);
+  --product-reviews-date-color: #9ca3af;
+
+  // Pagination variables
+  --product-reviews-pagination-top: var(--mlt-sys-spacing-8);
+  --product-reviews-pagination-right: var(--mlt-sys-spacing-8);
+  --product-reviews-pagination-gap: var(--mlt-sys-spacing-2);
+  --product-reviews-pagination-btn-bg: rgba(255, 255, 255, 0.08);
+  --product-reviews-pagination-btn-color: var(--mlt-sys-color-white);
+  --product-reviews-pagination-btn-size: 36px;
+  --product-reviews-pagination-btn-radius: var(--mlt-sys-radius-full);
+  --product-reviews-pagination-btn-font: var(--mlt-sys-font-size-6);
+  --product-reviews-pagination-btn-hover: var(--mlt-sys-color-primary);
+  --product-reviews-pagination-span-color: #e5e7eb;
+  --product-reviews-pagination-span-size: var(--mlt-sys-font-size-3);
+  --product-reviews-pagination-span-width: 44px;
+
   position: relative;
-  margin-top: 4rem;
-  padding: 3rem;
-  background: linear-gradient(180deg, #0b1220, #111827);
-  border-radius: 1.5rem;
-  font-family: 'Inter', sans-serif;
-  max-width: 1200px;
-  min-height: 620px;
-  margin: 4rem auto 0 auto;
+  margin-top: var(--product-reviews-margin-top);
+  padding: var(--product-reviews-padding);
+  background: var(--product-reviews-bg);
+  border-radius: var(--product-reviews-radius);
+  font-family: var(--product-reviews-font), sans-serif;
+  max-width: var(--product-reviews-max-width);
+  min-height: var(--product-reviews-min-height);
+  margin: 3rem auto 0 auto;
 
   h2 {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
+    color: var(--product-reviews-title-color);
+    font-size: var(--product-reviews-title-size);
+    font-weight: var(--product-reviews-title-weight);
+    margin-bottom: var(--product-reviews-title-margin);
   }
-}
 
-.product-reviews__login-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(30, 41, 59, 0.95);
-  color: #e0e6ed;
-  border: 1.5px solid #1d4ed8;
-  border-radius: 12px;
-  padding: 1.1rem 1.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.13rem;
-  font-weight: 500;
-  gap: 0.7rem;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08);
+  &__login-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--product-reviews-message-bg);
+    color: var(--product-reviews-message-color);
+    border: 1.5px solid var(--product-reviews-message-border);
+    border-radius: var(--product-reviews-message-radius);
+    padding: var(--product-reviews-message-padding) var(--mlt-sys-spacing-4);
+    margin-bottom: var(--product-reviews-message-margin);
+    font-size: var(--product-reviews-message-size);
+    font-weight: var(--product-reviews-message-weight);
+    gap: var(--product-reviews-message-gap);
+    box-shadow: var(--product-reviews-message-shadow);
 
-  a {
-    color: #38bdf8;
-    text-decoration: underline;
-    font-weight: 600;
-    margin-left: 0.2em;
-    transition: color 0.2s;
+    a {
+      color: var(--product-reviews-link-color);
+      text-decoration: underline;
+      font-weight: var(--product-reviews-link-weight);
+      margin-left: var(--product-reviews-link-margin);
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--product-reviews-link-hover);
+      }
+    }
+
+    i {
+      font-size: var(--product-reviews-icon-size);
+      color: var(--product-reviews-icon-color);
+      margin-right: var(--product-reviews-icon-margin);
+    }
   }
-  a:hover {
-    color: #0ea5e9;
+
+  &__actions {
+    margin-left: auto;
+    display: flex;
+    gap: var(--product-reviews-actions-gap);
   }
-  i {
-    font-size: 1.4rem;
-    color: #facc15;
-    margin-right: 0.5em;
+
+  &__add-btn {
+    background: var(--product-reviews-btn-bg);
+    color: var(--product-reviews-btn-color);
+    border: none;
+    border-radius: var(--product-reviews-btn-radius);
+    padding: var(--product-reviews-btn-padding) var(--mlt-sys-spacing-4);
+    font-weight: var(--product-reviews-btn-weight);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--product-reviews-btn-gap);
+
+    &:hover {
+      background: var(--product-reviews-btn-hover);
+    }
   }
-}
 
-.product-reviews__actions {
-  margin-left: auto;
-  display: flex;
-  gap: 0.5rem;
-}
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--product-reviews-list-gap);
+    max-width: var(--product-reviews-list-max-width);
+    margin: 0 auto;
+  }
 
+  &__item {
+    background: var(--product-reviews-item-bg);
+    border: 1px solid var(--product-reviews-item-border);
+    border-radius: var(--product-reviews-item-radius);
+    padding: var(--product-reviews-item-padding) var(--mlt-sys-spacing-4);
+    box-shadow: var(--product-reviews-item-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: var(--product-reviews-item-gap);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-.product-reviews__add-btn {
-  background: #004580;
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 10px 18px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--product-reviews-item-hover-shadow);
+    }
+  }
 
-  &:hover {
-    background: #1d4ed8;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--product-reviews-header-gap);
+    margin-bottom: var(--product-reviews-header-margin);
+  }
+
+  &__avatar {
+    width: var(--product-reviews-avatar-size);
+    height: var(--product-reviews-avatar-size);
+    border-radius: var(--product-reviews-avatar-radius);
+    background: var(--product-reviews-avatar-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--product-reviews-avatar-size-font);
+    color: var(--product-reviews-avatar-color);
+    border: 1.5px solid var(--product-reviews-avatar-border);
+  }
+
+  &__user-name {
+    font-size: var(--product-reviews-name-size);
+    font-weight: var(--product-reviews-name-weight);
+    color: var(--product-reviews-name-color);
+    margin-bottom: var(--product-reviews-name-margin);
+    margin-left: var(--product-reviews-name-margin);
+    letter-spacing: var(--product-reviews-name-spacing);
+  }
+
+  &__stars {
+    display: flex;
+    gap: var(--product-reviews-stars-gap);
+
+    i {
+      color: var(--product-reviews-star-color);
+      font-size: var(--product-reviews-star-size);
+    }
+  }
+
+  &__comment {
+    color: var(--product-reviews-comment-color);
+    font-size: var(--product-reviews-comment-size);
+    line-height: var(--product-reviews-comment-line);
+  }
+
+  &__date {
+    margin-top: auto;
+    font-size: var(--product-reviews-date-size);
+    color: var(--product-reviews-date-color);
+  }
+
+  &__pagination {
+    position: absolute;
+    top: var(--product-reviews-pagination-top);
+    right: var(--product-reviews-pagination-right);
+    display: flex;
+    align-items: center;
+    gap: var(--product-reviews-pagination-gap);
+
+    button {
+      background: var(--product-reviews-pagination-btn-bg);
+      border: none;
+      color: var(--product-reviews-pagination-btn-color);
+      width: var(--product-reviews-pagination-btn-size);
+      height: var(--product-reviews-pagination-btn-size);
+      border-radius: var(--product-reviews-pagination-btn-radius);
+      font-size: var(--product-reviews-pagination-btn-font);
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover:not(:disabled) {
+        background: var(--product-reviews-pagination-btn-hover);
+      }
+
+      &:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      color: var(--product-reviews-pagination-span-color);
+      font-size: var(--product-reviews-pagination-span-size);
+      min-width: var(--product-reviews-pagination-span-width);
+      text-align: center;
+    }
   }
 }
 
 .icon-btn {
-  background: none;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  --icon-btn-bg: none;
+  --icon-btn-border: none;
+  --icon-btn-radius: var(--mlt-sys-radius-full);
+  --icon-btn-size: 32px;
+  --icon-btn-color: #b0b8c1;
+  --icon-btn-font: var(--mlt-sys-font-size-6);
+  --icon-btn-edit-bg: #232b3b;
+  --icon-btn-edit-color: #2563eb;
+  --icon-btn-delete-bg: #232b3b;
+  --icon-btn-delete-color: #ff5c5c;
+
+  background: var(--icon-btn-bg);
+  border: var(--icon-btn-border);
+  border-radius: var(--icon-btn-radius);
+  width: var(--icon-btn-size);
+  height: var(--icon-btn-size);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b0b8c1;
-  font-size: 1.2rem;
+  color: var(--icon-btn-color);
+  font-size: var(--icon-btn-font);
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-}
 
-.icon-btn.edit {
-  &:hover {
-    background: #232b3b;
-    color: #2563eb; 
+  &.edit {
+    &:hover {
+      background: var(--icon-btn-edit-bg);
+      color: var(--icon-btn-edit-color);
+    }
   }
-}
 
-.icon-btn.delete {
-  &:hover {
-    background: #232b3b;
-    color: #ff5c5c; 
+  &.delete {
+    &:hover {
+      background: var(--icon-btn-delete-bg);
+      color: var(--icon-btn-delete-color);
+    }
   }
 }
 
 .delete-confirm-popup {
+  --delete-confirm-popup-bg: rgba(0,0,0,0.45);
+  --delete-confirm-popup-z: 99999;
+
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: var(--delete-confirm-popup-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999;
+  z-index: var(--delete-confirm-popup-z);
 }
+
 .delete-confirm-content {
-  background: #181f2a;
-  padding: 2rem 2.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  --delete-confirm-content-bg: #181f2a;
+  --delete-confirm-content-padding: var(--mlt-sys-spacing-6);
+  --delete-confirm-content-radius: var(--mlt-sys-radius-xl);
+  --delete-confirm-content-shadow: var(--mlt-sys-shadow-lg);
+  --delete-confirm-content-color: var(--mlt-sys-color-white);
+  --delete-confirm-content-min-width: 260px;
+  --delete-confirm-content-btn-margin: 0 var(--mlt-sys-spacing-1);
+  --delete-confirm-content-btn-padding: var(--mlt-sys-spacing-2);
+  --delete-confirm-content-btn-radius: var(--mlt-sys-radius-full);
+  --delete-confirm-content-btn-weight: var(--mlt-sys-font-weight-semibold);
+  --delete-confirm-content-btn-delete-bg: #e53935;
+  --delete-confirm-content-btn-delete-color: var(--mlt-sys-color-white);
+  --delete-confirm-content-btn-cancel-bg: #232b3b;
+  --delete-confirm-content-btn-cancel-color: var(--mlt-sys-color-white);
+
+  background: var(--delete-confirm-content-bg);
+  padding: var(--delete-confirm-content-padding) var(--mlt-sys-spacing-7);
+  border-radius: var(--delete-confirm-content-radius);
+  box-shadow: var(--delete-confirm-content-shadow);
   text-align: center;
-  color: #fff;
-  min-width: 260px;
-}
-.delete-confirm-content button {
-  margin: 0 0.5rem;
-  padding: 0.7rem 1.2rem;
-  border-radius: 999px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-}
-.delete-confirm-content button:first-child {
-  background: #e53935;
-  color: #fff;
-}
-.delete-confirm-content button:last-child {
-  background: #232b3b;
-  color: #fff;
-}
-
-.product-reviews__list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.product-reviews__item {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1.25rem;
-  padding: 1.6rem 1.8rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-  }
-}
-
-.product-reviews__header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.product-reviews__avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #232b3b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.7rem;
-  color: #fff5;
-  border: 1.5px solid #fff2;
-}
-
-.product-reviews__user-name {
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: #38bdf8;
-  margin-bottom: 0.1rem;
-  margin-left: 0.1rem;
-  letter-spacing: 0.01em;
-}
-
-.product-reviews__stars {
-  display: flex;
-  gap: 0.25rem;
-
-  i {
-    color: #facc15;
-    font-size: 1.15rem;
-  }
-}
-
-.product-reviews__comment {
-  color: #e5e7eb;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.product-reviews__date {
-  margin-top: auto;
-  font-size: 0.85rem;
-  color: #9ca3af;
-}
-
-.product-reviews__pagination {
-  position: absolute;
-  top: 3rem;
-  right: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  color: var(--delete-confirm-content-color);
+  min-width: var(--delete-confirm-content-min-width);
 
   button {
-    background: rgba(255, 255, 255, 0.08);
+    margin: var(--delete-confirm-content-btn-margin);
+    padding: var(--delete-confirm-content-btn-padding) var(--mlt-sys-spacing-3);
+    border-radius: var(--delete-confirm-content-btn-radius);
     border: none;
-    color: #fff;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    font-size: 1.2rem;
+    font-weight: var(--delete-confirm-content-btn-weight);
     cursor: pointer;
-    transition: background 0.2s;
 
-    &:hover:not(:disabled) {
-      background: #004580;
+    &:first-child {
+      background: var(--delete-confirm-content-btn-delete-bg);
+      color: var(--delete-confirm-content-btn-delete-color);
     }
 
-    &:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
+    &:last-child {
+      background: var(--delete-confirm-content-btn-cancel-bg);
+      color: var(--delete-confirm-content-btn-cancel-color);
     }
-  }
-
-  span {
-    color: #e5e7eb;
-    font-size: 0.9rem;
-    min-width: 44px;
-    text-align: center;
   }
 }
 
 .modal {
+  --modal-z: 9999;
+  --modal-backdrop-bg: rgba(0, 0, 0, 0.55);
+  --modal-content-bg: #0b1220;
+  --modal-content-border: rgba(255, 255, 255, 0.12);
+  --modal-content-radius: var(--mlt-sys-radius-xl);
+  --modal-content-padding: var(--mlt-sys-spacing-6);
+  --modal-content-width: 90%;
+  --modal-content-max-width: 560px;
+  --modal-content-z: 10;
+  --modal-title-color: var(--mlt-sys-color-white);
+  --modal-title-margin: var(--mlt-sys-spacing-3);
+  --modal-title-size: var(--mlt-sys-font-size-6);
+  --modal-textarea-width: 100%;
+  --modal-textarea-min-height: 140px;
+  --modal-textarea-bg: rgba(255, 255, 255, 0.08);
+  --modal-textarea-border: rgba(255, 255, 255, 0.18);
+  --modal-textarea-radius: var(--mlt-sys-radius-lg);
+  --modal-textarea-color: var(--mlt-sys-color-white);
+  --modal-textarea-padding: var(--mlt-sys-spacing-3);
+  --modal-textarea-size: var(--mlt-sys-font-size-5);
+  --modal-textarea-margin: var(--mlt-sys-spacing-3);
+  --modal-select-width: 100%;
+  --modal-select-padding: var(--mlt-sys-spacing-2);
+  --modal-select-bg: rgba(255, 255, 255, 0.08);
+  --modal-select-border: rgba(255, 255, 255, 0.18);
+  --modal-select-radius: var(--mlt-sys-radius-lg);
+  --modal-select-color: var(--mlt-sys-color-white);
+  --modal-select-size: var(--mlt-sys-font-size-5);
+  --modal-select-margin: var(--mlt-sys-spacing-3);
+  --modal-buttons-gap: var(--mlt-sys-spacing-2);
+  --modal-btn-padding: var(--mlt-sys-spacing-2);
+  --modal-btn-radius: var(--mlt-sys-radius-full);
+  --modal-btn-weight: var(--mlt-sys-font-weight-semibold);
+  --modal-cancel-bg: rgba(255, 255, 255, 0.08);
+  --modal-cancel-color: var(--mlt-sys-color-white);
+  --modal-delete-bg: #e53935;
+  --modal-delete-color: var(--mlt-sys-color-white);
+  --modal-btn-primary-bg: var(--mlt-sys-color-primary);
+  --modal-btn-primary-color: var(--mlt-sys-color-white);
+
   position: fixed;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-}
+  z-index: var(--modal-z);
 
-.modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-}
-
-.modal__content {
-  position: relative;
-  background: #0b1220;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  width: 90%;
-  max-width: 560px;
-  z-index: 10;
-
-  h3 {
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: var(--modal-backdrop-bg);
   }
 
-  textarea {
-    width: 100%;
-    min-height: 140px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 12px;
-    color: #fff;
-    padding: 12px 14px;
-    font-size: 1rem;
-    resize: vertical;
-    outline: none;
-    margin-bottom: 12px;
-  }
+  &__content {
+    position: relative;
+    background: var(--modal-content-bg);
+    border: 1px solid var(--modal-content-border);
+    border-radius: var(--modal-content-radius);
+    padding: var(--modal-content-padding);
+    width: var(--modal-content-width);
+    max-width: var(--modal-content-max-width);
+    z-index: var(--modal-content-z);
 
-  select {
-    width: 100%;
-    padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 12px;
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-    margin-bottom: 14px;
-  }
+    h3 {
+      color: var(--modal-title-color);
+      margin-bottom: var(--modal-title-margin);
+      font-size: var(--modal-title-size);
+    }
 
-  .modal__buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-  }
+    textarea {
+      width: var(--modal-textarea-width);
+      min-height: var(--modal-textarea-min-height);
+      background: var(--modal-textarea-bg);
+      border: 1px solid var(--modal-textarea-border);
+      border-radius: var(--modal-textarea-radius);
+      color: var(--modal-textarea-color);
+      padding: var(--modal-textarea-padding) var(--mlt-sys-spacing-3);
+      font-size: var(--modal-textarea-size);
+      resize: vertical;
+      outline: none;
+      margin-bottom: var(--modal-textarea-margin);
+    }
 
-  button {
-    padding: 10px 14px;
-    border-radius: 999px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-  }
+    select {
+      width: var(--modal-select-width);
+      padding: var(--modal-select-padding) var(--mlt-sys-spacing-3);
+      background: var(--modal-select-bg);
+      border: 1px solid var(--modal-select-border);
+      border-radius: var(--modal-select-radius);
+      color: var(--modal-select-color);
+      font-size: var(--modal-select-size);
+      outline: none;
+      margin-bottom: var(--modal-select-margin);
+    }
 
-  .modal__cancel {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-  }
+    .modal__buttons {
+      display: flex;
+      gap: var(--modal-buttons-gap);
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
 
-  .modal__delete {
-    background: #e53935;
-    color: #fff;
-  }
+    button {
+      padding: var(--modal-btn-padding) var(--mlt-sys-spacing-3);
+      border-radius: var(--modal-btn-radius);
+      font-weight: var(--modal-btn-weight);
+      cursor: pointer;
+      border: none;
+    }
 
-  button:not(.modal__cancel):not(.modal__delete) {
-    background: #004580;
-    color: #fff;
+    .modal__cancel {
+      background: var(--modal-cancel-bg);
+      color: var(--modal-cancel-color);
+    }
+
+    .modal__delete {
+      background: var(--modal-delete-bg);
+      color: var(--modal-delete-color);
+    }
+
+    button:not(.modal__cancel):not(.modal__delete) {
+      background: var(--modal-btn-primary-bg);
+      color: var(--modal-btn-primary-color);
+    }
   }
 }
 
 .star-rating {
+  --star-rating-gap: var(--mlt-sys-spacing-05);
+  --star-rating-margin: var(--mlt-sys-spacing-4);
+  --star-rating-size: var(--mlt-sys-font-size-7);
+  --star-rating-color: #facc15;
+  --star-rating-hover: #ffd600;
+
   display: flex;
-  gap: 0.3rem;
-  margin-bottom: 18px;
-  font-size: 1.7rem;
+  gap: var(--star-rating-gap);
+  margin-bottom: var(--star-rating-margin);
+  font-size: var(--star-rating-size);
   justify-content: flex-start;
 
   i {
-    color: #facc15;
+    color: var(--star-rating-color);
     cursor: pointer;
     transition: transform 0.1s;
+
     &.active {
-      color: #facc15;
+      color: var(--star-rating-color);
     }
+
     &:hover {
       transform: scale(1.2);
-      color: #ffd600;
+      color: var(--star-rating-hover);
     }
   }
 }
 
 .star-label {
-  color: #fff;
-  font-size: 1.6rem;
-  margin-right: 0.7rem;
+  --star-label-color: var(--mlt-sys-color-white);
+  --star-label-size: var(--mlt-sys-font-size-7);
+  --star-label-margin: var(--mlt-sys-spacing-2);
+
+  color: var(--star-label-color);
+  font-size: var(--star-label-size);
+  margin-right: var(--star-label-margin);
 }
 
 
