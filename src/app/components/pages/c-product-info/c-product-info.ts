@@ -12,18 +12,21 @@ import { CartService } from '../../../core/services/cart-service';
 import { IArticle } from '../../../core/models/i-article';
 import { ICategory } from '../../../core/models/i-category';
 import { CProductReview } from '../c-product-review/c-product-review';
+import { ToastComponent } from '../../ui/toast/toast.component';
 
 @Component({
   selector: 'app-c-product-info',
   templateUrl: './c-product-info.html',
   styleUrls: ['./c-product-info.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, CProductReview],
+  imports: [CommonModule, FormsModule, CProductReview, ToastComponent],
 })
 export class CProductInfoComponent implements OnInit {
   product: IArticle | null = null;
   ratingStars: ('full' | 'half' | 'empty')[] = [];
   category: ICategory | null = null;
+  showToast: boolean = false;
+  toastMessage: string = '';
 
   private destroy$ = new Subject<void>();
 
@@ -75,13 +78,24 @@ export class CProductInfoComponent implements OnInit {
     return stars;
   }
 
-addToCart() {
+  private showMessage(message: string) {
+    this.toastMessage = message;
+    this.showToast = true;
+    setTimeout(() => this.showToast = false, 3000);
+  }
+
+  addToCart() {
     if (!this.product) return;
+
+    if (!this.authService.getUser()) {
+      this.showMessage('Debes iniciar sesión para añadir productos al carrito');
+      return;
+    }
 
     this.cartService.addProduct(this.product.productId, 1)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        error: () => alert('Error al añadir el producto al carrito.'),
+        error: () => this.showMessage('Error al añadir el producto al carrito'),
       });
   }
 }

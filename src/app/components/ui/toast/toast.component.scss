@@ -11,7 +11,7 @@
   --toast-message-color: var(--mlt-sys-color-white);
   --toast-message-font-weight: var(--mlt-sys-font-weight-semibold);
   --toast-message-font-size: var(--mlt-sys-font-size-5);
-  --toast-message-radius: var(--mlt-sys-radius-xl);
+  --toast-message-radius: var(--mlt-sys-radius-lg);
   --toast-message-shadow: var(--mlt-sys-shadow-md);
   --toast-message-text-align: center;
   --toast-message-pointer-events: none;
@@ -27,6 +27,7 @@
   padding: var(--toast-message-padding);
   background: var(--toast-message-bg);
   color: var(--toast-message-color);
+  font-family: var(--mlt-sys-font-family-primary);
   font-weight: var(--toast-message-font-weight);
   font-size: var(--toast-message-font-size);
   border-radius: var(--toast-message-radius);

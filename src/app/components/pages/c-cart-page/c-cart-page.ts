@@ -25,11 +25,17 @@ export class CCartPage implements OnInit {
   errorMessage = '';
 
   showAddressModal: boolean = false;
+  showPaymentModal: boolean = false;
   loadingCheckout: boolean = false;
   checkoutError: string = '';
   checkoutSuccess: string = '';
 
   address: string = '';
+
+  cardName: string = '';
+  cardNumber: string = '';
+  cardExpiry: string = '';
+  cardCVC: string = '';
 
   showToast: boolean = false;
   toastMessage: string = '';
@@ -42,7 +48,6 @@ export class CCartPage implements OnInit {
 
 
   ngOnInit(): void {
-    // subscribe to shared cart observable so totals update automatically
     this.cartSub = this.cartService.cart$.subscribe((cart) => {
       if (!cart) return;
       this.cartItems = cart.cartItems || [];
@@ -50,7 +55,6 @@ export class CCartPage implements OnInit {
       this.totalProducts = cart.totalProducts || 0;
       this.isLoading = false;
     });
-    // initial load
     this.loadCart();
   }
 
@@ -147,23 +151,92 @@ export class CCartPage implements OnInit {
     this.showAddressModal = false;
   }
 
+  openPaymentModal() {
+    this.showAddressModal = false;
+    this.showPaymentModal = true;
+    this.cardName = '';
+    this.cardNumber = '';
+    this.cardExpiry = '';
+    this.cardCVC = '';
+  }
+
+  closePaymentModal() {
+    this.showPaymentModal = false;
+  }
+
+  formatCardName(event: any) {
+    this.cardName = event.target.value.toUpperCase();
+  }
+
+  formatCardNumber(event: any) {
+    let value = event.target.value.replace(/\s/g, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    this.cardNumber = formattedValue.substring(0, 19); 
+  }
+
+  formatExpiry(event: any) {
+    let value = event.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+      value = value.substring(0, 2) + '/' + value.substring(2, 4);
+    }
+    this.cardExpiry = value.substring(0, 5);
+  }
+
+  formatCVC(event: any) {
+    this.cardCVC = event.target.value.replace(/\D/g, '').substring(0, 3);
+  }
+
   acceptAddress(event?: Event) {
+    if (event) event.preventDefault();
+    
+    if (!this.address || this.address.trim() === '') {
+      this.checkoutError = 'Por favor, ingrese una dirección de envío';
+      return;
+    }
+        this.checkoutError = '';
+    this.openPaymentModal();
+  }
+
+  processPayment(event?: Event) {
     if (event) event.preventDefault();
     this.loadingCheckout = true;
     this.checkoutError = '';
     this.checkoutSuccess = '';
 
-    this.orderService.checkout({ address: this.address }).subscribe({
+    const [month, year] = this.cardExpiry.split('/');
+    const fullYear = '20' + year;
+    const expirationDate = `${fullYear}-${month}-01`;
+
+    const checkoutData = {
+      address: this.address,
+      cardPaymentRequest: {
+        origin: {
+          cardNumber: this.cardNumber.replace(/\s/g, ''),
+          expirationDate: expirationDate,
+          cvc: this.cardCVC,
+          fullName: this.cardName
+        },
+        payment: {
+          amount: this.totalPrice,
+          concept: `Compra en VetUp Store - Pedido de ${this.cardName}`
+        }
+      }
+    };
+
+    this.orderService.checkout(checkoutData).subscribe({
       next: (order) => {
         this.checkoutSuccess = 'Pedido realizado correctamente.';
         this.loadingCheckout = false;
-        this.showAddressModal = false;
+        this.showPaymentModal = false;
         this.address = '';
+        this.cardName = '';
+        this.cardNumber = '';
+        this.cardExpiry = '';
+        this.cardCVC = '';
         this.toastMessage = '¡Pedido realizado con éxito!';
         this.showToast = true;
         setTimeout(() => this.showToast = false, 3500);
         console.log('Checkout response:', order);
-        // Refresh cart data on the page
         this.loadCart();
       },
       error: (err) => {

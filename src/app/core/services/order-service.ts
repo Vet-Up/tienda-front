@@ -15,8 +15,8 @@ export class OrderService {
     return this.http.get<IOrder[]>(`${this.apiUrl}/user/${userId}`);
   }
 
-  checkout(address: any): Observable<IOrder> {
-    return this.http.post<IOrder>(`${this.apiUrl}/checkout`, address);
+  checkout(checkoutData: any): Observable<IOrder> {
+    return this.http.post<IOrder>(`${this.apiUrl}/checkout`, checkoutData);
   }
 
   hasUserPurchasedProduct(userId: number, productId: number): Observable<boolean> {

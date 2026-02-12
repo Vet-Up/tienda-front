@@ -3,7 +3,6 @@
     <app-toast [message]="toastMessage"></app-toast>
   }
   <div class="cart-page__container">
-
     <div class="cart-page__cart">
       <h2 class="cart-page__title">Cart</h2>
 
@@ -12,30 +11,47 @@
           <div class="cart-page__empty-message">
             <i class="bi bi-cart4 cart-page__empty-icon"></i>
             <div class="cart-page__empty-title">Your cart is empty</div>
-            <p class="cart-page__empty-desc">You didn't add any item in your cart yet. Browse the website to find amazing deals!</p>
+            <p class="cart-page__empty-desc">
+              You didn't add any item in your cart yet. Browse the website to find amazing deals!
+            </p>
           </div>
         } @else {
           @for (item of cartItems; track item.id) {
             <div class="cart-item">
-              <img class="cart-item__image" [src]="'img/' + item.product.pictureProduct">
+              <img class="cart-item__image" [src]="'img/' + item.product.pictureProduct" />
               <div class="cart-item__details">
                 <h3 class="cart-item__name">{{ item.product.name }}</h3>
               </div>
               <div class="cart-item__aside">
-                <div class="cart-item__price">
-                  {{ item.product.price }} €
-                </div>
+                <div class="cart-item__price">{{ item.product.price }} €</div>
                 <div class="cart-item__controls-group">
                   <div class="cart-item__controls">
-                    <button type="button" class="qty-btn" (click)="decrement(item)"
-                      [disabled]="item._pending || item.quantity <= 1">-</button>
+                    <button
+                      type="button"
+                      class="qty-btn"
+                      (click)="decrement(item)"
+                      [disabled]="item._pending || item.quantity <= 1"
+                    >
+                      -
+                    </button>
                     <span class="qty-value">{{ item.quantity }}</span>
-                    <button type="button" class="qty-btn" (click)="increment(item)"
-                      [disabled]="item._pending || item.quantity >= 20">+</button>
+                    <button
+                      type="button"
+                      class="qty-btn"
+                      (click)="increment(item)"
+                      [disabled]="item._pending || item.quantity >= 20"
+                    >
+                      +
+                    </button>
                   </div>
                   <div class="cart-item__controls-separator-horizontal"></div>
-                  <button type="button" class="cart-item__action" (click)="removeItem(item)" [disabled]="item._pending"
-                    title="Remove">
+                  <button
+                    type="button"
+                    class="cart-item__action"
+                    (click)="removeItem(item)"
+                    [disabled]="item._pending"
+                    title="Remove"
+                  >
                     <i class="bi bi-trash"></i>
                   </button>
                 </div>
@@ -51,7 +67,6 @@
         <h2 class="cart-summary__title">Summary</h2>
 
         <div class="cart-summary__content">
-
           <div class="cart-summary__info">
             <span>Total products: {{ totalProducts }}</span>
           </div>
@@ -61,34 +76,149 @@
             <span class="cart-summary__total-value">{{ totalPrice }} €</span>
           </div>
 
-          <button class="cart-summary__button" (click)="openAddressModal()">
+          <button 
+            class="cart-summary__button" 
+            (click)="openAddressModal()"
+            [disabled]="cartItems.length === 0"
+          >
             Next
             <i class="bi bi-chevron-right"></i>
           </button>
 
           @if (showAddressModal) {
-          <div class="modal-backdrop">
-            <div class="modal">
-              <h3>Shipping address</h3>
-              <form (submit)="acceptAddress($event)">
-                <label class="single-line">
-                  Shipping address
-                  <input class="address-input" type="text" name="address" [(ngModel)]="address"
-                    placeholder="Street, City, ZIP, Country" required />
-                </label>
-                <div class="modal-actions">
-                  <button type="button" class="btn-cancel" (click)="closeAddressModal()">Cancel</button>
-                  <button type="submit" class="btn-accept" [disabled]="loadingCheckout">Accept</button>
-                </div>
-                @if (checkoutError) {
-                <p class="error">{{ checkoutError }}</p>
-                }
-                @if (checkoutSuccess) {
-                <p class="success">{{ checkoutSuccess }}</p>
-                }
-              </form>
+            <div class="modal-backdrop">
+              <div class="modal">
+                <h3>Order Details</h3>
+                <form (submit)="acceptAddress($event)">
+                  <label class="single-line">
+                    Shipping address
+                    <input
+                      class="address-input"
+                      type="text"
+                      name="address"
+                      [(ngModel)]="address"
+                      placeholder="Street, City, ZIP, Country"
+                      required
+                    />
+                  </label>
+                  <div class="modal-actions">
+                    <div class="modal-actions-left">
+                      @if (checkoutError) {
+                        <p class="error">{{ checkoutError }}</p>
+                      }
+                    </div>
+                    <div class="modal-actions-right">
+                      <button type="button" class="btn-cancel" (click)="closeAddressModal()">
+                        Cancel
+                      </button>
+                      <button type="submit" class="btn-accept" [disabled]="loadingCheckout">
+                        Pay
+                      </button>
+                    </div>
+                  </div>
+                  @if (checkoutSuccess) {
+                    <p class="success">{{ checkoutSuccess }}</p>
+                  }
+                </form>
+              </div>
             </div>
-          </div>
+          }
+
+          @if (showPaymentModal) {
+            <div class="modal-backdrop">
+              <div class="modal payment-modal">
+                <h3>Payment Information</h3>
+
+                <!-- Credit Card Visual -->
+                <div class="credit-card">
+                  <div class="credit-card__chip">
+                    <i class="bi bi-cpu"></i>
+                  </div>
+                  <div class="credit-card__number">
+                    {{ cardNumber || '•••• •••• •••• ••••' }}
+                  </div>
+                  <div class="credit-card__name">
+                    {{ cardName || 'FULL NAME' }}
+                  </div>
+                  <div class="credit-card__footer">
+                    <div class="credit-card__expiry">
+                      <div class="credit-card__label">Expires</div>
+                      <div class="credit-card__value">{{ cardExpiry || 'MM/YY' }}</div>
+                    </div>
+                    <div class="credit-card__cvc">
+                      <div class="credit-card__label">CVC</div>
+                      <div class="credit-card__value">{{ cardCVC || '•••' }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Payment Form -->
+                <form (submit)="processPayment($event)">
+                  <label>
+                    Cardholder Name
+                    <input
+                      type="text"
+                      name="cardName"
+                      [(ngModel)]="cardName"
+                      (input)="formatCardName($event)"
+                      placeholder="JOHN DOE"
+                      maxlength="30"
+                      required
+                    />
+                  </label>
+
+                  <label>
+                    Card Number
+                    <input
+                      type="text"
+                      name="cardNumber"
+                      [(ngModel)]="cardNumber"
+                      (input)="formatCardNumber($event)"
+                      placeholder="1234 5678 9012 3456"
+                      maxlength="19"
+                      required
+                    />
+                  </label>
+
+                  <div class="payment-row">
+                    <label>
+                      Expiry Date
+                      <input
+                        type="text"
+                        name="cardExpiry"
+                        [(ngModel)]="cardExpiry"
+                        (input)="formatExpiry($event)"
+                        placeholder="MM/YY"
+                        maxlength="5"
+                        required
+                      />
+                    </label>
+
+                    <label>
+                      CVC
+                      <input
+                        type="text"
+                        name="cardCVC"
+                        [(ngModel)]="cardCVC"
+                        (input)="formatCVC($event)"
+                        placeholder="123"
+                        maxlength="3"
+                        required
+                      />
+                    </label>
+                  </div>
+
+                  <div class="modal-actions">
+                    <button type="button" class="btn-cancel" (click)="closePaymentModal()">
+                      Cancel
+                    </button>
+                    <button type="submit" class="btn-accept" [disabled]="loadingCheckout">
+                      {{ loadingCheckout ? 'Processing...' : 'Pay Now' }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           }
 
           <div class="cart-summary__divider">
@@ -102,6 +232,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>

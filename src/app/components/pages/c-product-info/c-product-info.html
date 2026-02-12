@@ -91,3 +91,8 @@
   </div>
   <app-c-product-review [productId]="product.productId"></app-c-product-review>
   }
+
+  @if (showToast) {
+    <app-toast [message]="toastMessage" [duration]="3000"></app-toast>
+  }
+</div>
