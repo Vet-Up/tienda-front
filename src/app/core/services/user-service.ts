@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = '/api/users';
+  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/users';
 
   constructor(private http: HttpService) {}
 
