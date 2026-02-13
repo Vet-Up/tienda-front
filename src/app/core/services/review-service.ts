@@ -31,7 +31,8 @@ export class ReviewService {
     size: number = 4,
     sort?: string,
   ): Observable<IPage<IReview>> {
-    let url = `${this.apiUrl}/product/${productId}?page=${page}&size=${size}`;
+    const backendPage = page - 1;
+    let url = `${this.apiUrl}/product/${productId}?page=${backendPage}&size=${size}`;
     if (sort) {
       url += `&sort=${sort}`;
     }
