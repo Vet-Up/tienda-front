@@ -47,7 +47,7 @@
                   <div class="c-cart-item__controls-separator-horizontal"></div>
                   <button
                     type="button"
-                    class="cart-item__action"
+                    class="c-cart-item__action"
                     (click)="removeItem(item)"
                     [disabled]="item._pending"
                     title="Remove"
@@ -129,30 +129,28 @@
               <div class="modal payment-modal">
                 <h3>Payment Information</h3>
 
-                <!-- Credit Card Visual -->
-                <div class="credit-card">
-                  <div class="credit-card__chip">
+                <div class="c-cart-credit-card">
+                  <div class="c-cart-credit-card__chip"> 
                     <i class="bi bi-cpu"></i>
                   </div>
-                  <div class="credit-card__number">
+                  <div class="c-cart-credit-card__number">
                     {{ cardNumber || '•••• •••• •••• ••••' }}
                   </div>
-                  <div class="credit-card__name">
+                  <div class="c-cart-credit-card__name">
                     {{ cardName || 'FULL NAME' }}
                   </div>
-                  <div class="credit-card__footer">
-                    <div class="credit-card__expiry">
-                      <div class="credit-card__label">Expires</div>
-                      <div class="credit-card__value">{{ cardExpiry || 'MM/YY' }}</div>
+                  <div class="c-cart-credit-card__footer">
+                    <div class="c-cart-credit-card__expiry">
+                      <div class="c-cart-credit-card__label">Expires</div>
+                      <div class="c-cart-credit-card__value">{{ cardExpiry || 'MM/YY' }}</div>
                     </div>
-                    <div class="credit-card__cvc">
-                      <div class="credit-card__label">CVC</div>
-                      <div class="credit-card__value">{{ cardCVC || '•••' }}</div>
+                    <div class="c-cart-credit-card__cvc">
+                      <div class="c-cart-credit-card__label">CVC</div>
+                      <div class="c-cart-credit-card__value">{{ cardCVC || '•••' }}</div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Payment Form -->
                 <form (submit)="processPayment($event)">
                   <label>
                     Cardholder Name
@@ -221,11 +219,11 @@
             </div>
           }
 
-          <div class="cart-summary__divider">
+          <div class="c-cart-summary__divider">
             <span>or</span>
           </div>
 
-          <button class="cart-summary__continue" routerLink="/products">
+          <button class="c-cart-summary__continue" routerLink="/products">
             <i class="bi bi-chevron-left"></i>
             Continue shopping
           </button>

@@ -21,7 +21,6 @@ export class CCartPage implements OnInit {
   cartItems: ICartItem[] = [];
   totalPrice: number = 0;
   totalProducts: number = 0;
-  isLoading = true;
   errorMessage = '';
 
   showAddressModal: boolean = false;
@@ -31,7 +30,6 @@ export class CCartPage implements OnInit {
   checkoutSuccess: string = '';
 
   address: string = '';
-
   cardName: string = '';
   cardNumber: string = '';
   cardExpiry: string = '';
@@ -53,7 +51,6 @@ export class CCartPage implements OnInit {
       this.cartItems = cart.cartItems || [];
       this.totalPrice = cart.totalPrice || 0;
       this.totalProducts = cart.totalProducts || 0;
-      this.isLoading = false;
     });
     this.loadCart();
   }
@@ -62,65 +59,52 @@ export class CCartPage implements OnInit {
     this.cartSub?.unsubscribe();
   }
 
-    increment(item: any) {
-      if (item._pending) return;
-      const current = item.quantity || 0;
-      if (current >= 20) return;
-      item._pending = true;
-      item.quantity = Math.min(20, current + 1);
-      this.cartService.updateCartItemById(item.id, { quantity: item.quantity }).subscribe({
-        next: () => {
-          item._pending = false;
-          this.loadCart();
-        },
-        error: (err) => {
-          console.error('Error updating cart item', err);
-          item.quantity = current;
-          item._pending = false;
-        }
-      });
-    }
+  increment(item: any) {
+    if (item._pending) return;
+    if (item.quantity >= 20) return;
+    item._pending = true;
+    this.cartService.updateCartItemById(item.id, { quantity: item.quantity + 1 }).subscribe({
+      next: () => {
+        item._pending = false;
+      },
+      error: () => {
+        item._pending = false;
+      }
+    });
+  }
 
-    decrement(item: any) {
-      if (item._pending) return;
-      const current = item.quantity || 1;
-      if (current <= 1) return;
-      item._pending = true;
-      item.quantity = Math.max(1, current - 1);
-      this.cartService.updateCartItemById(item.id, { quantity: item.quantity }).subscribe({
-        next: () => {
-          item._pending = false;
-          this.loadCart();
-        },
-        error: (err) => {
-          console.error('Error updating cart item', err);
-          item.quantity = current;
-          item._pending = false;
-        }
-      });
-    }
+  decrement(item: any) {
+    if (item._pending) return;
+    if (item.quantity <= 1) return;
+    item._pending = true;
+    this.cartService.updateCartItemById(item.id, { quantity: item.quantity - 1 }).subscribe({
+      next: () => {
+        item._pending = false;
+      },
+      error: () => {
+        item._pending = false;
+      }
+    });
+  }
 
-    removeItem(item: any) {
-      if (item._pending) return;
-      item._pending = true;
-      this.cartService.deleteCartItemById(item.id).subscribe({
-        next: () => {
-          item._pending = false;
-          this.loadCart();
-        },
-        error: (err) => {
-          console.error('Error deleting cart item', err);
-          item._pending = false;
-        }
-      });
-    }
+  removeItem(item: any) {
+    if (item._pending) return;
+    item._pending = true;
+    this.cartService.deleteCartItemById(item.id).subscribe({
+      next: () => {
+        item._pending = false;
+      },
+      error: () => {
+        item._pending = false;
+      }
+    });
+  }
 
   private loadCart(): void {
     const user = this.authService.getUser();
 
     if (!user || !user.id) {
       this.errorMessage = 'Usuario no autenticado';
-      this.isLoading = false;
       return;
     }
 
@@ -131,12 +115,10 @@ export class CCartPage implements OnInit {
         this.cartItems = cart.cartItems || [];
         this.totalPrice = cart.totalPrice;
         this.totalProducts = cart.totalProducts;
-        this.isLoading = false;
       },
       error: (error) => {
         console.error('Error al cargar el carrito:', error);
         this.errorMessage = 'Error al cargar el carrito';
-        this.isLoading = false;
       }
     });
   }
