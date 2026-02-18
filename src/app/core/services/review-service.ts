@@ -9,7 +9,7 @@ import { IPage } from '../models/i-page';
 })
 
 export class ReviewService {
-  private apiUrl = 'http://localhost:8080/api/reviews';
+  private apiUrl = '/api/reviews';
 
   constructor(private http: HttpService) {}
 

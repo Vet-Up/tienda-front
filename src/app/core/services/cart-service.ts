@@ -18,7 +18,7 @@ export interface ICart {
 })
 export class CartService {
 
-  private apiUrl = 'http://localhost:8080/api/carts';
+  private apiUrl = '/api/carts';
   private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
   sidebarOpen$ = this.sidebarOpenSubject.asObservable();
   private cartSubject = new BehaviorSubject<ICart | null>(null);
@@ -45,11 +45,11 @@ export class CartService {
   }
 
   updateCartItemById(cartItemId: number, body: { quantity: number }): Observable<any> {
-    return this.httpService.put<any>(`http://localhost:8080/api/cart-items/${cartItemId}`, body);
+    return this.httpService.put<any>(`/api/cart-items/${cartItemId}`, body);
   }
 
   deleteCartItemById(cartItemId: number): Observable<any> {
-    return this.httpService.delete<any>(`http://localhost:8080/api/cart-items/${cartItemId}`);
+    return this.httpService.delete<any>(`/api/cart-items/${cartItemId}`);
   }
 
   addProduct(productId: number, quantity: number): Observable<any> {

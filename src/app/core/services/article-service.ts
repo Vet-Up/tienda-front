@@ -8,7 +8,7 @@ import { IPage } from '../models/i-page';
   providedIn: 'root',
 })
 export class ArticleService {
-  private apiUrl = 'http://localhost:8080/api/products';
+  private apiUrl = '/api/products';
 
   constructor(private http: HttpService) {}
 
