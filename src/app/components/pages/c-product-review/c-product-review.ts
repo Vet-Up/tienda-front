@@ -172,13 +172,24 @@ export class CProductReview implements OnInit {
       return;
     }
 
-    this.orderService.hasUserPurchasedProduct(this.userId, this.productId).subscribe({
-      next: (purchased) => {
-        this.hasPurchased = purchased;
+    // Verificar usando los pedidos del usuario
+    this.orderService.getOrdersByUserId(this.userId).subscribe({
+      next: (orders) => {
+        // Verificar si algún pedido con estado "order" (no "cart") contiene el producto
+        this.hasPurchased = orders.some(order => 
+          order.state.toLowerCase() === 'order' && 
+          order.orderItems.some(item => item.product.productId === this.productId)
+        );
+        console.log(`User ${this.userId} has purchased product ${this.productId}:`, this.hasPurchased);
       },
-      error: () => {
+      error: (err) => {
+        console.error('Error checking if user purchased product:', err);
         this.hasPurchased = false;
       },
     });
+  }
+
+  refreshPurchaseStatus() {
+    this.checkIfUserHasPurchased();
   }
 }

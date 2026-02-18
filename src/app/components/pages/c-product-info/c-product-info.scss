@@ -1,4 +1,4 @@
-.product-page-container {
+.c-product-page-container {
   --product-page-container-max-width: 726px;
   --product-page-container-margin: 0 auto;
   --product-page-container-padding: var(--mlt-sys-spacing-4) var(--mlt-sys-spacing-2);
@@ -8,7 +8,7 @@
   padding: var(--product-page-container-padding);
 }
 
-.product {
+.c-product {
   --product-font-family: var(--mlt-sys-font-family-primary);
   --product-display: flex;
   --product-justify: center;

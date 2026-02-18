@@ -1,4 +1,4 @@
-<div class="product-reviews">
+<div class="c-product-reviews">
 
   <h2>
     {{ reviewsTotalElements }}
@@ -7,43 +7,43 @@
 
 
   @if (!userId) {
-  <div class="product-reviews__login-message">
+  <div class="c-product-reviews__login-message">
     <i class="bi bi-exclamation-circle"></i>
     <span>To write a review you must <a routerLink="/login">log in</a>.</span>
   </div>
   } @else if (!hasPurchased && !userReview) {
-  <div class="product-reviews__login-message">
+  <div class="c-product-reviews__login-message">
     <i class="bi bi-exclamation-circle"></i>
     <span>You must purchase this product before writing a review.</span>
   </div>
   } @else if (!userReview) {
-  <button class="product-reviews__add-btn" (click)="openModal()" style="margin-bottom: 1.2rem;">
+  <button class="c-product-reviews__add-btn" (click)="openModal()" style="margin-bottom: 1.2rem;">
     <i class="bi bi-pencil"></i> Add review
   </button>
   }
 
 
-  <div class="product-reviews__list">
+  <div class="c-product-reviews__list">
     @for (review of reviews; track review.reviewId) {
-    <div class="product-reviews__item">
-      <div class="product-reviews__header">
-        <div class="product-reviews__avatar product-reviews__avatar--default">
+    <div class="c-product-reviews__item">
+      <div class="c-product-reviews__header">
+        <div class="c-product-reviews__avatar c-product-reviews__avatar--default">
           <i class="bi bi-person"></i>
         </div>
         <div>
-          <div class="product-reviews__user-name">
+          <div class="c-product-reviews__user-name">
             @if (review.userName) {
             <span>{{ review.userName }}</span>
             }
           </div>
-          <div class="product-reviews__stars">
+          <div class="c-product-reviews__stars">
             @for (star of [].constructor(review.rating); track $index) {
             <i class="bi bi-star-fill"></i>
             }
           </div>
         </div>
         @if (userReview && review.reviewId === userReview.reviewId) {
-        <div class="product-reviews__actions">
+        <div class="c-product-reviews__actions">
           <button class="icon-btn edit" title="Edit review" (click)="openModal()">
             <i class="bi bi-pencil"></i>
           </button>
@@ -53,10 +53,10 @@
         </div>
         }
       </div>
-      <p class="product-reviews__comment">
+      <p class="c-product-reviews__comment">
         {{ review.comment }}
       </p>
-      <span class="product-reviews__date">
+      <span class="c-product-reviews__date">
         {{ review.createdAt | date:'shortDate' }}
       </span>
     </div>
@@ -92,7 +92,7 @@
   </div>
   }
 
-  <div class="product-reviews__pagination">
+  <div class="c-product-reviews__pagination">
     <button (click)="prevReviewsPage()" [disabled]="reviewsPage === 1">‹</button>
     <span>{{ reviewsPage }} / {{ reviewsTotalPages }}</span>
     <button (click)="nextReviewsPage()" [disabled]="reviewsPage === reviewsTotalPages">›</button>

@@ -1,4 +1,4 @@
-.login {
+.c-login {
   --login-font-family: var(--mlt-sys-font-family-primary);
   --login-bg-img: url('../../../../../public/img/backgroundLogin.png');
   --login-bg-size: cover;
@@ -151,7 +151,7 @@
   }
 }
 
-.login__register-link {
+.c-login__register-link {
   margin-top: var(--mlt-sys-spacing-2);
   text-align: center;
   color: var(--mlt-sys-color-white);

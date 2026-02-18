@@ -1,7 +1,7 @@
-<div class="c-article-layout">
+<div class="c-products-layout">
     <div class="c-products-center-col">
-        <div class="products-toolbar products-toolbar--split">
-            <div class="products-toolbar__count count-with-clear">
+        <div class="c-products-toolbar products-toolbar--split">
+            <div class="c-products-toolbar__count count-with-clear">
                 <span class="results-number">{{ totalElements }} results</span>
                 @if (hasActiveFilters) {
                 <button class="btn-clear-filters" (click)="clearAllFilters()">
@@ -10,25 +10,25 @@
                 }
             </div>
 
-            <div class="products-toolbar__actions">
+            <div class="c-products-toolbar__actions">
 
-                <div class="products-toolbar__search" [class.active]="searchActive">
+                <div class="c-products-toolbar__search" [class.active]="searchActive">
                     <input type="text" placeholder="Search products..." [(ngModel)]="searchQuery"
                         (ngModelChange)="onSearchQueryChange()" />
-                    <button class="products-toolbar__search-close" (click)="toggleSearch()">
+                    <button class="c-products-toolbar__search-close" (click)="toggleSearch()">
                         <i class="bi bi-x"></i>
                     </button>
                 </div>
 
-                <button class="products-toolbar__search-toggle" (click)="toggleSearch()">
+                <button class="c-products-toolbar__search-toggle" (click)="toggleSearch()">
                     <i class="bi bi-search"></i>
                 </button>
 
-                <button class="products-toolbar__filter" type="button" (click)="toggleFilters()">
+                <button class="c-products-toolbar__filter" type="button" (click)="toggleFilters()">
                     <i class="bi bi-sliders"></i> Filters
                 </button>
 
-                <div class="products-toolbar__sort" (click)="toggleSortDropdown($event)">
+                <div class="c-products-toolbar__sort" (click)="toggleSortDropdown($event)">
                     <div class="custom-dropdown" [class.open]="sortDropdownOpen">
                         <button type="button" class="custom-dropdown__button">
                             @if (sortSelected === null) {
@@ -64,7 +64,7 @@
         </app-c-filters-sidebar>
 
 
-        <div class="c-article-list">
+        <div class="c-products-list">
             @for (article of articles; track article.productId) {
             <app-c-article-card [product]="article" [categories]="categories"></app-c-article-card>
             }

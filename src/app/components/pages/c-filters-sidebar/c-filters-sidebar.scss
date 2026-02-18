@@ -1,4 +1,4 @@
-.filters-sidebar__backdrop {
+.c-filters-sidebar__backdrop {
   --filters-sidebar-backdrop-top: 75;
   --filters-sidebar-backdrop-left: 0;
   --filters-sidebar-backdrop-width: 100vw;
@@ -13,7 +13,7 @@
   z-index: var(--filters-sidebar-backdrop-z);
 }
 
-.filters-sidebar {
+.c-filters-sidebar {
   --filters-sidebar-top: 75px;
   --filters-sidebar-left: 0;
   --filters-sidebar-width: 340px;
@@ -138,7 +138,7 @@
   }
 }
 
-.filter-section {
+.c-filter-section {
   margin-bottom: var(--filters-sidebar-section-margin-bottom);
 
   .filter-header {
@@ -186,21 +186,21 @@
 }
 
 // Estilos para el filtro de rango de precio en la sidebar
-.filters-sidebar__price-range-container {
+.c-filters-sidebar__price-range-container {
   position: relative;
   display: block;
   height: var(--filters-sidebar-price-container-height);
   margin-top: var(--filters-sidebar-price-container-margin-top);
 }
 
-.filters-sidebar__section-title {
+.c-filters-sidebar__section-title {
   font-size: var(--filters-sidebar-price-title-size);
   font-weight: var(--filters-sidebar-price-title-weight);
   margin-bottom: var(--filters-sidebar-price-title-margin-bottom);
   display: block;
 }
 
-.filters-sidebar__price-range-track {
+.c-filters-sidebar__price-range-track {
   position: absolute;
   top: var(--filters-sidebar-price-track-top);
   transform: translateY(-50%);
@@ -211,7 +211,7 @@
   z-index: var(--filters-sidebar-price-track-z);
 }
 
-.filters-sidebar__price-range-labels {
+.c-filters-sidebar__price-range-labels {
   position: absolute;
   top: var(--filters-sidebar-price-labels-top);
   left: 0;
@@ -221,7 +221,7 @@
   pointer-events: none;
 }
 
-.filters-sidebar__price-options-label {
+.c-filters-sidebar__price-options-label {
   color: var(--filters-sidebar-price-label-color);
   display: flex;
   justify-content: center;
@@ -229,7 +229,7 @@
   margin-top: var(--filters-sidebar-price-label-margin-top);
 }
 
-.filters-sidebar__price-range-selected {
+.c-filters-sidebar__price-range-selected {
   position: absolute;
   top: var(--filters-sidebar-price-selected-top);
   transform: translateY(-50%);
@@ -239,7 +239,7 @@
   z-index: var(--filters-sidebar-price-selected-z);
 }
 
-.filters-sidebar__price-range-slider {
+.c-filters-sidebar__price-range-slider {
   position: absolute;
   width: var(--filters-sidebar-price-slider-width);
   height: var(--filters-sidebar-price-slider-height);

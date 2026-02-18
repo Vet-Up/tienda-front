@@ -1,17 +1,17 @@
-<div class="product-page-container">
+<div class="c-product-page-container">
   @if (product) {
-  <div class="product">
+  <div class="c-product">
 
-    <div class="product__image">
+    <div class="c-product__image">
       <img [src]="'img/' + product.pictureProduct" [alt]="product.name" />
     </div>
 
-    <div class="product__info">
-      <span class="product__brand">{{ product.brand }}</span>
+    <div class="c-product__info">
+      <span class="c-product__brand">{{ product.brand }}</span>
 
-      <h1 class="product__title">{{ product.name }}</h1>
+      <h1 class="c-product__title">{{ product.name }}</h1>
 
-      <div class="product__rating">
+      <div class="c-product__rating">
         @for (star of ratingStars; track $index) {
         @if (star === 'full') {
         <i class="bi bi-star-fill"></i>
@@ -23,67 +23,67 @@
         <i class="bi bi-star"></i>
         }
         }
-        <span class="product__rating-value">
+        <span class="c-product__rating-value">
           {{ product.averageRating | number:'1.1-1' }}
         </span>
-        <span class="product__rating-count">
+        <span class="c-product__rating-count">
           ({{ product.reviewsCount }} reviews)
         </span>
       </div>
 
-      <div class="product__price">
-        <span class="product__price-current">
+      <div class="c-product__price">
+        <span class="c-product__price-current">
           €{{ product.price }}
         </span>
         @if (product.discount && product.discount > 0) {
-        <span class="product__price-discount">
+        <span class="c-product__price-discount">
           -{{ product.discount | number:'1.0-0' }}%
         </span>
-        <span class="product__price-old">
+        <span class="c-product__price-old">
           €{{ product.basePrice }}
         </span>
         }
       </div>
 
 
-      <p class="product__description">
+      <p class="c-product__description">
         {{ product.productDescription }}
       </p>
       @if (category) {
-      <div class="product__category">
+      <div class="c-product__category">
         <strong>Category:</strong> {{ category.name }}
       </div>
       }
 
-      <div class="product__features-row">
-        <div class="product__feature">
-          <span class="product__feature-icon"><i class="bi bi-truck"></i></span>
-          <span class="product__feature-label">Free shipping</span>
-          <span class="product__feature-desc">Orders +€50</span>
+      <div class="c-product__features-row">
+        <div class="c-product__feature">
+          <span class="c-product__feature-icon"><i class="bi bi-truck"></i></span>
+          <span class="c-product__feature-label">Free shipping</span>
+          <span class="c-product__feature-desc">Orders +€50</span>
         </div>
-        <div class="product__feature">
-          <span class="product__feature-icon"><i class="bi bi-shield"></i></span>
-          <span class="product__feature-label">Warranty</span>
-          <span class="product__feature-desc">30 days</span>
+        <div class="c-product__feature">
+          <span class="c-product__feature-icon"><i class="bi bi-shield"></i></span>
+          <span class="c-product__feature-label">Warranty</span>
+          <span class="c-product__feature-desc">30 days</span>
         </div>
-        <div class="product__feature">
-          <span class="product__feature-icon"><i class="bi bi-box-seam"></i></span>
-          <span class="product__feature-label">Stock</span>
-          <span class="product__feature-desc">{{ product.stock }} units</span>
+        <div class="c-product__feature">
+          <span class="c-product__feature-icon"><i class="bi bi-box-seam"></i></span>
+          <span class="c-product__feature-label">Stock</span>
+          <span class="c-product__feature-desc">{{ product.stock }} units</span>
         </div>
       </div>
 
-      <button class="product__add" (click)="addToCart()">
+      <button class="c-product__add" (click)="addToCart()">
         <i class="bi bi-cart"></i> Add to Cart
       </button>
 
-      <div class="product__includes">
-        <div class="product__includes-label">What's included:</div>
-        <ul class="product__includes-list">
-          <li class="product__includes-item"><i class="bi bi-check2"></i> Certified original product</li>
-          <li class="product__includes-item"><i class="bi bi-check2"></i> Instructions in English</li>
-          <li class="product__includes-item"><i class="bi bi-check2"></i> Quality guarantee</li>
-          <li class="product__includes-item"><i class="bi bi-check2"></i> 24/7 customer support</li>
+      <div class="c-product__includes">
+        <div class="c-product__includes-label">What's included:</div>
+        <ul class="c-product__includes-list">
+          <li class="c-product__includes-item"><i class="bi bi-check2"></i> Certified original product</li>
+          <li class="c-product__includes-item"><i class="bi bi-check2"></i> Instructions in English</li>
+          <li class="c-product__includes-item"><i class="bi bi-check2"></i> Quality guarantee</li>
+          <li class="c-product__includes-item"><i class="bi bi-check2"></i> 24/7 customer support</li>
         </ul>
       </div>
     </div>

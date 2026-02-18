@@ -1,29 +1,29 @@
-<div class="orders-page">
-  <div class="orders-page__container">
-    <h2 class="orders-page__title">Orders</h2>
+<div class="c-orders-page">
+  <div class="c-orders-page__container">
+    <h2 class="c-orders-page__title">Orders</h2>
 
-    <div class="orders-page__list">
+    <div class="c-orders-page__list">
       @for (order of orders; track order.id) {
-      <article class="order-card">
-        <header class="order-card__header">
-          <div class="order-card__info">
-            <div class="order-card__field">
-              <span class="order-card__label">Pedido</span>
-              <span class="order-card__value">{{ order.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
+      <article class="c-order-card">
+        <header class="c-order-card__header">
+          <div class="c-order-card__info">
+            <div class="c-order-card__field">
+              <span class="c-order-card__label">Pedido</span>
+              <span class="c-order-card__value">{{ order.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
             </div>
-            <div class="order-card__field">
-              <span class="order-card__label">Nº pedido</span>
-              <span class="order-card__value">{{ order.id }}</span>
+            <div class="c-order-card__field">
+              <span class="c-order-card__label">Nº pedido</span>
+              <span class="c-order-card__value">{{ order.id }}</span>
             </div>
-            <div class="order-card__field">
-              <span class="order-card__label">Vendido por</span>
-              <span class="order-card__value">{{ order.user.name }}</span>
+            <div class="c-order-card__field">
+              <span class="c-order-card__label">Vendido por</span>
+              <span class="c-order-card__value">{{ order.user.name }}</span>
             </div>
           </div>
 
-          <div class="order-card__meta">
-            <span class="order-card__total">{{ order.totalPrice | currency: 'EUR':'symbol':'1.2-2' }}</span>
-            <button type="button" class="order-card__toggle" (click)="toggleOrder(order.id)">
+          <div class="c-order-card__meta">
+            <span class="c-order-card__total">{{ order.totalPrice | currency: 'EUR':'symbol':'1.2-2' }}</span>
+            <button type="button" class="c-order-card__toggle" (click)="toggleOrder(order.id)">
               Detalles
               <i class="bi bi-chevron-right" [class.open]="expandedOrderId === order.id"></i>
             </button>
@@ -31,23 +31,23 @@
         </header>
 
         @if (expandedOrderId === order.id) {
-        <div class="order-card__details">
-          <div class="order-card__summary">
+        <div class="c-order-card__details">
+          <div class="c-order-card__summary">
             <span>Productos: <strong>{{ order.totalProducts }}</strong></span>
             @if (order.address) {
             <span>Dirección: <small>{{ order.address }}</small></span>
             }
           </div>
 
-          <div class="order-card__items">
+          <div class="c-order-card__items">
             @for (item of order.orderItems; track item.id) {
-            <div class="order-card__item">
-              <img class="order-card__item-thumb" [src]="'img/' + item.product.pictureProduct" alt="{{ item.product.name }}">
-              <div class="order-card__item-body">
-                <p class="order-card__item-name">{{ item.product.name }}</p>
-                <p class="order-card__item-quantity">Cantidad: {{ item.quantity }}</p>
+            <div class="c-order-card__item">
+              <img class="c-order-card__item-thumb" [src]="'img/' + item.product.pictureProduct" alt="{{ item.product.name }}">
+              <div class="c-order-card__item-body">
+                <p class="c-order-card__item-name">{{ item.product.name }}</p>
+                <p class="c-order-card__item-quantity">Cantidad: {{ item.quantity }}</p>
               </div>
-              <div class="order-card__item-price">
+              <div class="c-order-card__item-price">
                 {{ item.product.price | currency: 'EUR':'symbol':'1.2-2' }}
               </div>
             </div>

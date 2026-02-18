@@ -1,22 +1,22 @@
 @if (show) {
-<div class="cart-sidebar__backdrop" (click)="close()"></div>
-<aside class="cart-sidebar">
-	<div class="cart-sidebar__header">
-		<h2>Cart @if (totalItems > 0) { <span class="cart-sidebar__count">({{ totalItems }} items)</span> }</h2>
-		<button class="cart-sidebar__close" (click)="close()">&times;</button>
+<div class="c-cart-sidebar__backdrop" (click)="close()"></div>
+<aside class="c-cart-sidebar">
+	<div class="c-cart-sidebar__header">
+		<h2>Cart @if (totalItems > 0) { <span class="c-cart-sidebar__count">({{ totalItems }} items)</span> }</h2>
+		<button class="c-cart-sidebar__close" (click)="close()">&times;</button>
 	</div>
 
-	<div class="cart-sidebar__content">
+	<div class="c-cart-sidebar__content">
 		@if (cart && cart.cartItems && cart.cartItems.length > 0) {
 		@for (item of cart.cartItems; track item.id) {
-		<div class="cart-sidebar__item">
-			<div class="cart-item__thumb">
+		<div class="c-cart-sidebar__item">
+			<div class="c-cart-item__thumb">
 				<img [src]="'img/' + item.product.pictureProduct" alt="{{ item.product.name }}" />
 			</div>
-			<div class="cart-item__body">
-				<div class="cart-item__title">{{ item.product.name }}</div>
-				<div class="cart-item__meta">{{ item.product.brand ? item.product.brand : 'PC (Steam)' }}</div>
-				<div class="cart-item__controls">
+			<div class="c-cart-item__body">
+				<div class="c-cart-item__title">{{ item.product.name }}</div>
+				<div class="c-cart-item__meta">{{ item.product.brand ? item.product.brand : 'PC (Steam)' }}</div>
+				<div class="c-cart-item__controls">
 					<button type="button" class="qty-btn" (click)="decrement(item)"
 						[disabled]="item._pending || item.quantity <= 1">-</button>
 					<span class="qty-value">{{ item.quantity }}</span>
@@ -24,14 +24,14 @@
 						[disabled]="item._pending || item.quantity >= 20">+</button>
 				</div>
 			</div>
-			<div class="cart-item__aside">
-				<div class="cart-item__aside-top">
-					<span class="cart-item__price">{{ item.product.price }} €</span>
+			<div class="c-cart-item__aside">
+				<div class="c-cart-item__aside-top">
+					<span class="c-cart-item__price">{{ item.product.price }} €</span>
 					@if (item.product.discount) {
-					<span class="cart-item__discount">-{{ item.product.discount }}%</span>
+					<span class="c-cart-item__discount">-{{ item.product.discount }}%</span>
 					}
 				</div>
-				<button type="button" class="cart-item__remove" (click)="removeItem(item)" [disabled]="item._pending"
+				<button type="button" class="c-cart-item__remove" (click)="removeItem(item)" [disabled]="item._pending"
 					title="Remove"><i class="bi bi-trash"></i></button>
 			</div>
 		</div>
@@ -39,10 +39,10 @@
 		}
 
 		@if (!(cart && cart.cartItems && cart.cartItems.length > 0)) {
-		<div class="cart-sidebar__empty">
-			<i class="bi bi-cart4 cart-sidebar__empty-icon"></i>
-			<div class="cart-sidebar__empty-title">Your cart is empty</div>
-			<div class="cart-sidebar__empty-desc">
+		<div class="c-cart-sidebar__empty">
+			<i class="bi bi-cart4 c-cart-sidebar__empty-icon"></i>
+			<div class="c-cart-sidebar__empty-title">Your cart is empty</div>
+			<div class="c-cart-sidebar__empty-desc">
 				You didn't add any item in your cart yet. Browse the website to find amazing deals!
 			</div>
 		</div>
@@ -53,9 +53,9 @@
 		<span class="total-price">{{ cart.totalPrice | number:'1.2-2' }} €</span>
 	</div>
 
-	<div class="cart-sidebar__footer">
-		<button class="cart-sidebar__view" (click)="goToCart()">Go to cart @if (totalItems > 0) { <span
-				class="cart-sidebar__view-count">({{ totalItems }})</span> }</button>
+	<div class="c-cart-sidebar__footer">
+		<button class="c-cart-sidebar__view" (click)="goToCart()">Go to cart @if (totalItems > 0) { <span
+				class="c-cart-sidebar__view-count">({{ totalItems }})</span> }</button>
 	</div>
 </aside>
 }

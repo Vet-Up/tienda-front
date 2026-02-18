@@ -1,4 +1,4 @@
-.register {
+.c-register {
   --register-font-family: var(--mlt-sys-font-family-primary);
   --register-bg-img: url('../../../../../public/img/backgroundLogin.png');
   --register-bg-size: cover;
@@ -151,7 +151,7 @@
   }
 }
 
-.register__icon {
+.c-register__icon {
   position: absolute;
   right: var(--register-icon-right);
   font-size: 16px;
@@ -160,7 +160,7 @@
   pointer-events: none;
 }
 
-.register__field-error {
+.c-register__field-error {
   margin-top: var(--mlt-sys-spacing-1);
   font-size: var(--mlt-sys-font-size-2);
   color: #ff6b6b;
@@ -170,7 +170,7 @@
   font-weight: var(--mlt-sys-font-weight-medium);
 }
 
-.register__register-link {
+.c-register__register-link {
   margin-top: var(--mlt-sys-spacing-3);
   text-align: center;
   color: var(--mlt-sys-color-white);

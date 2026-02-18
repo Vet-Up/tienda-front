@@ -1,20 +1,20 @@
-<div class="login">
-  <div class="login__container">
+<div class="c-login">
+  <div class="c-login__container">
     @if (showToast) {
       <app-toast [message]="toastMessage" [duration]="3500"></app-toast>
     }
-    <div class="login__card">
-      <h1 class="login__title">Login</h1>
+    <div class="c-login__card">
+      <h1 class="c-login__title">Login</h1>
 
       @if (error) {
-      <div class="login__error">
+      <div class="c-login__error">
         {{ error }}
       </div>
       }
 
-      <form class="login__form" (submit)="onSubmit($event)">
-        <div class="login__field">
-          <div class="login__input-wrapper">
+      <form class="c-login__form" (submit)="onSubmit($event)">
+        <div class="c-login__field">
+          <div class="c-login__input-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="login__icon"
               viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
@@ -24,8 +24,8 @@
           </div>
         </div>
 
-        <div class="login__field">
-          <div class="login__input-wrapper">
+        <div class="c-login__field">
+          <div class="c-login__input-wrapper">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="login__icon"
               viewBox="0 0 16 16">
               <path
@@ -36,11 +36,11 @@
           </div>
         </div>
 
-        <div class="login__actions">
-          <button class="login__button" type="submit" [disabled]="loading">Login</button>
+        <div class="c-login__actions">
+          <button class="c-login__button" type="submit" [disabled]="loading">Login</button>
         </div>
       </form>
-      <div class="login__register-link">
+      <div class="c-login__register-link">
         No account yet?
         <a routerLink="/register">Register here</a>
       </div>

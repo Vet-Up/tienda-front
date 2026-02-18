@@ -1,4 +1,4 @@
-.c-article-list {
+.c-products-list {
   --c-article-list-columns: repeat(4, 1fr);
   --c-article-list-gap: var(--mlt-sys-spacing-6);
   --c-article-list-margin-top: var(--mlt-sys-spacing-6);
@@ -20,13 +20,13 @@
   padding: var(--c-products-center-col-padding);
 }
 
-.products-toolbar {
+.c-products-toolbar {
   --products-toolbar-font: var(--mlt-sys-font-family-primary);
 
   font-family: var(--products-toolbar-font);
 }
 
-.products-toolbar--split {
+.c-products-toolbar--split {
   --products-toolbar-split-margin-top: var(--mlt-sys-spacing-6);
   --products-toolbar-split-margin-bottom: 0;
   --products-toolbar-split-padding: 0;
@@ -55,7 +55,7 @@
   }
 }
 
-.products-toolbar__count {
+.c-products-toolbar__count {
   --products-toolbar-count-size: var(--mlt-sys-font-size-5);
   --products-toolbar-count-weight: var(--mlt-sys-font-weight-semibold);
   --products-toolbar-count-color: var(--mlt-sys-color-gray-800);
@@ -67,13 +67,13 @@
   letter-spacing: var(--products-toolbar-count-spacing);
 }
 
-.products-toolbar__actions {
+.c-products-toolbar__actions {
   display: flex;
   gap: 0.8rem;
   align-items: center;
 }
 
-.products-toolbar__filter {
+.c-products-toolbar__filter {
   --products-toolbar-filter-bg: linear-gradient(135deg, #004580 0%, #0092B4 100%);
   --products-toolbar-filter-color: var(--mlt-sys-color-white);
   --products-toolbar-filter-radius: var(--mlt-sys-radius-lg);
@@ -109,7 +109,7 @@
   }
 }
 
-.products-toolbar__search {
+.c-products-toolbar__search {
   --products-toolbar-search-width: 0;
   --products-toolbar-search-active-width: 250px;
   --products-toolbar-search-margin: 0.5rem;
@@ -145,7 +145,7 @@
   }
 }
 
-.products-toolbar__search-close {
+.c-products-toolbar__search-close {
   --products-toolbar-search-close-right: 5px;
   --products-toolbar-search-close-color: var(--mlt-sys-color-gray-500);
   --products-toolbar-search-close-size: var(--mlt-sys-font-size-5);
@@ -162,7 +162,7 @@
   justify-content: center;
 }
 
-.products-toolbar__search-toggle {
+.c-products-toolbar__search-toggle {
   --products-toolbar-search-toggle-bg: linear-gradient(135deg, #004580 0%, #0092B4 100%);
   --products-toolbar-search-toggle-color: var(--mlt-sys-color-white);
   --products-toolbar-search-toggle-radius: 50%;
@@ -180,7 +180,7 @@
   cursor: pointer;
 }
 
-.products-toolbar__sort {
+.c-products-toolbar__sort {
   --products-toolbar-sort-min-width: 200px;
   --products-toolbar-sort-max-width: 220px;
 

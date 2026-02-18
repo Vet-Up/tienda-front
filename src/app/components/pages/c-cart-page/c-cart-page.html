@@ -1,31 +1,31 @@
-<div class="cart-page">
+<div class="c-cart-page">
   @if (showToast) {
     <app-toast [message]="toastMessage"></app-toast>
   }
-  <div class="cart-page__container">
-    <div class="cart-page__cart">
-      <h2 class="cart-page__title">Cart</h2>
+  <div class="c-cart-page__container">
+    <div class="c-cart-page__cart">
+      <h2 class="c-cart-page__title">Cart</h2>
 
-      <div class="cart-page__items">
+      <div class="c-cart-page__items">
         @if (cartItems.length === 0) {
-          <div class="cart-page__empty-message">
-            <i class="bi bi-cart4 cart-page__empty-icon"></i>
-            <div class="cart-page__empty-title">Your cart is empty</div>
-            <p class="cart-page__empty-desc">
+          <div class="c-cart-page__empty-message">
+            <i class="bi bi-cart4 c-cart-page__empty-icon"></i>
+            <div class="c-cart-page__empty-title">Your cart is empty</div>
+            <p class="c-cart-page__empty-desc">
               You didn't add any item in your cart yet. Browse the website to find amazing deals!
             </p>
           </div>
         } @else {
           @for (item of cartItems; track item.id) {
-            <div class="cart-item">
-              <img class="cart-item__image" [src]="'img/' + item.product.pictureProduct" />
-              <div class="cart-item__details">
-                <h3 class="cart-item__name">{{ item.product.name }}</h3>
+            <div class="c-cart-item">
+              <img class="c-cart-item__image" [src]="'img/' + item.product.pictureProduct" />
+              <div class="c-cart-item__details">
+                <h3 class="c-cart-item__name">{{ item.product.name }}</h3>
               </div>
-              <div class="cart-item__aside">
-                <div class="cart-item__price">{{ item.product.price }} €</div>
-                <div class="cart-item__controls-group">
-                  <div class="cart-item__controls">
+              <div class="c-cart-item__aside">
+                <div class="c-cart-item__price">{{ item.product.price }} €</div>
+                <div class="c-cart-item__controls-group">
+                  <div class="c-cart-item__controls">
                     <button
                       type="button"
                       class="qty-btn"
@@ -44,7 +44,7 @@
                       +
                     </button>
                   </div>
-                  <div class="cart-item__controls-separator-horizontal"></div>
+                  <div class="c-cart-item__controls-separator-horizontal"></div>
                   <button
                     type="button"
                     class="cart-item__action"
@@ -62,22 +62,22 @@
       </div>
     </div>
 
-    <div class="cart-page__summary">
-      <div class="cart-summary">
-        <h2 class="cart-summary__title">Summary</h2>
+    <div class="c-cart-page__summary">
+      <div class="c-cart-summary">
+        <h2 class="c-cart-summary__title">Summary</h2>
 
-        <div class="cart-summary__content">
-          <div class="cart-summary__info">
+        <div class="c-cart-summary__content">
+          <div class="c-cart-summary__info">
             <span>Total products: {{ totalProducts }}</span>
           </div>
 
-          <div class="cart-summary__total">
-            <span class="cart-summary__total-label">Total</span>
-            <span class="cart-summary__total-value">{{ totalPrice }} €</span>
+          <div class="c-cart-summary__total">
+            <span class="c-cart-summary__total-label">Total</span>
+            <span class="c-cart-summary__total-value">{{ totalPrice }} €</span>
           </div>
 
           <button 
-            class="cart-summary__button" 
+            class="c-cart-summary__button" 
             (click)="openAddressModal()"
             [disabled]="cartItems.length === 0"
           >

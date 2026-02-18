@@ -1,4 +1,4 @@
-.orders-page {
+.c-orders-page {
   --orders-page-font-family: var(--mlt-sys-font-family-primary);
   --orders-page-max-width: 1100px;
   --orders-page-margin: var(--mlt-sys-spacing-5);
@@ -82,7 +82,7 @@
   }
 }
 
-.order-card {
+.c-order-card {
   background: var(--orders-page-card-bg);
   border: 1.5px solid var(--orders-page-card-border);
   border-radius: var(--orders-page-card-radius);
@@ -234,18 +234,4 @@
   }
 }
 
-@media (max-width: 768px) {
-  .order-header { 
-    flex-direction: column; 
-    align-items: stretch; 
-  }
-  .order-info { 
-    gap: var(--mlt-sys-spacing-3); 
-  }
-  .toggle-details, 
-  .order-card__toggle { 
-    width: 100%; 
-    justify-content: center; 
-  }
-}
 
