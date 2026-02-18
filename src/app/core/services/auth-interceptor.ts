@@ -19,11 +19,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       catchError((error) => {
         if (error.status === 401) {
           authService.logout();
-          router.navigate(['http://vetup-store-back.preproducciondaw.cip.fpmislata.com/login']);
+          router.navigate(['http://localhost:8080/login']);
           console.log('Redirigido por interceptor - 401');
         } else if (error.status === 403) {
           authService.logout();
-          router.navigate(['http://vetup-store-back.preproducciondaw.cip.fpmislata.com/login']);
+          router.navigate(['http://localhost:8080/login']);
           console.log('Redirigido por interceptor - 403');
         }
         throw error;

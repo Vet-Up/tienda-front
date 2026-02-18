@@ -7,7 +7,7 @@ import { IOrder } from '../models/i-order';
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/orders';
+  private apiUrl = 'http://localhost:8080/api/orders';
 
   constructor(private http: HttpService) {}
 

@@ -17,8 +17,8 @@ export interface ICart {
   providedIn: 'root',
 })
 export class CartService {
-  
-  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/carts';
+
+  private apiUrl = 'http://localhost:8080/api/carts';
   private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
   sidebarOpen$ = this.sidebarOpenSubject.asObservable();
   private cartSubject = new BehaviorSubject<ICart | null>(null);
@@ -45,13 +45,13 @@ export class CartService {
   }
 
   updateCartItemById(cartItemId: number, body: { quantity: number }): Observable<any> {
-    return this.httpService.put<any>(`http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/cart-items/${cartItemId}`, body);
+    return this.httpService.put<any>(`http://localhost:8080/api/cart-items/${cartItemId}`, body);
   }
 
   deleteCartItemById(cartItemId: number): Observable<any> {
-    return this.httpService.delete<any>(`http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/cart-items/${cartItemId}`);
+    return this.httpService.delete<any>(`http://localhost:8080/api/cart-items/${cartItemId}`);
   }
-  
+
   addProduct(productId: number, quantity: number): Observable<any> {
     const body = { productId, quantity };
     return this.httpService.post<any>(`${this.apiUrl}/add-product`, body)

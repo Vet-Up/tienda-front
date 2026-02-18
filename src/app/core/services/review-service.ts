@@ -9,7 +9,7 @@ import { IPage } from '../models/i-page';
 })
 
 export class ReviewService {
-  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/reviews';
+  private apiUrl = 'http://localhost:8080/api/reviews';
 
   constructor(private http: HttpService) {}
 

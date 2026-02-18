@@ -25,12 +25,12 @@ export class AuthService {
   private Observableuserv = new BehaviorSubject<IUser | null>(null);
   public user$ = this.Observableuserv.asObservable();
   private tokenVerified = false;
-  private apiUrl = 'http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/auth/login/CUSTOMER';
+  private apiUrl = 'http://localhost:8080/api/auth/login/CUSTOMER';
 
   constructor(private httpService: HttpService) {}
 
   register(userData: any): Observable<IRegisterResponse> {
-    return this.httpService.post<IRegisterResponse>('http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/users', userData);
+    return this.httpService.post<IRegisterResponse>('http://localhost:8080/api/users', userData);
   }
 
   login(username: string, password: string): Observable<ILoginResponse> {
@@ -54,7 +54,7 @@ export class AuthService {
       }
     }
     this.tokenVerified = true;
-    return this.httpService.get<IUser>('http://vetup-store-back.preproducciondaw.cip.fpmislata.com/api/auth/validate').pipe(
+    return this.httpService.get<IUser>('http://localhost:8080/api/auth/validate').pipe(
       timeout(5000),
       catchError((error) => {
         this.tokenVerified = false;
