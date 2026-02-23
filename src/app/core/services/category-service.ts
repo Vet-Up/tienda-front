@@ -20,6 +20,4 @@ export class CategoryService {
     return this.http.get<ICategory>(`${this.apiUrl}/${categoryId}`);
   }
 
-
-
 }

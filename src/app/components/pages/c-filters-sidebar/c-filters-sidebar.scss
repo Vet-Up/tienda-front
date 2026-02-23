@@ -49,6 +49,7 @@
   --filters-sidebar-label-weight: var(--mlt-sys-font-weight-regular);
   --filters-sidebar-label-color: var(--mlt-sys-color-white);
   --filters-sidebar-checkbox-margin-right: var(--mlt-sys-spacing-05);
+  --filters-sidebar-checkbox-gap: 0.55rem;
   --filters-sidebar-checkbox-accent: #c7d5e0;
   --filters-sidebar-checkbox-size: 1rem;
   --filters-sidebar-price-container-height: calc(var(--mlt-sys-spacing-1) * 10);
@@ -72,15 +73,16 @@
   --filters-sidebar-price-selected-z: 2;
   --filters-sidebar-price-slider-width: 100%;
   --filters-sidebar-price-slider-height: var(--mlt-sys-spacing-4);
-  --filters-sidebar-price-slider-top: 55%;
+  --filters-sidebar-price-slider-top: 50%;
   --filters-sidebar-price-slider-bg: transparent;
   --filters-sidebar-price-slider-z: 3;
-  --filters-sidebar-price-thumb-size: var(--mlt-sys-spacing-4);
+  --filters-sidebar-price-thumb-size: var(--mlt-sys-spacing-5);
   --filters-sidebar-price-thumb-bg: var(--mlt-sys-color-white);
   --filters-sidebar-price-thumb-border: 3px solid #272838;
-  --filters-sidebar-price-thumb-radius: var(--mlt-sys-radius-full);
+  --filters-sidebar-price-thumb-radius: 50%;
   --filters-sidebar-price-thumb-shadow: var(--mlt-sys-shadow-xs);
-  --filters-sidebar-price-thumb-hover-shadow: 0 0 0 6px rgba(243, 222, 138, 0.3);
+  --filters-sidebar-price-thumb-hover-shadow: 0 0 0 6px rgba(243, 222, 138, 0.45);
+  --filters-sidebar-price-thumb-hover-bg: #ffe57a;
   --filters-sidebar-price-track-height-slider: var(--mlt-sys-spacing-4);
 
   position: fixed;
@@ -170,13 +172,14 @@
     label {
       display: flex;
       align-items: center;
+      gap: var(--filters-sidebar-checkbox-gap);
       font-size: var(--filters-sidebar-label-size);
       font-weight: var(--filters-sidebar-label-weight);
       color: var(--filters-sidebar-label-color);
       cursor: pointer;
 
       input[type="checkbox"] {
-        margin-right: var(--filters-sidebar-checkbox-margin-right);
+        margin-right: 0;
         accent-color: var(--filters-sidebar-checkbox-accent);
         width: var(--filters-sidebar-checkbox-size);
         height: var(--filters-sidebar-checkbox-size);
@@ -262,45 +265,22 @@
     cursor: pointer;
     pointer-events: all;
     box-shadow: var(--filters-sidebar-price-thumb-shadow);
-    transition: box-shadow .15s cubic-bezier(.4, 0, .2, 1);
+    transition: box-shadow .15s cubic-bezier(.4, 0, .2, 1), background-color .15s cubic-bezier(.4, 0, .2, 1);
 
-    &:hover {
-      box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
-    }
-
-    &:focus {
-      box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
-      outline: none;
-    }
-
-    &:active {
-      box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
-    }
+    outline: none;
   }
 
   &::-moz-range-thumb {
-    width: 2rem;
-    height: 2rem;
+    width: var(--filters-sidebar-price-thumb-size);
+    height: var(--filters-sidebar-price-thumb-size);
     background: var(--filters-sidebar-price-thumb-bg);
     border: var(--filters-sidebar-price-thumb-border);
     border-radius: var(--filters-sidebar-price-thumb-radius);
     cursor: pointer;
     pointer-events: all;
     box-shadow: var(--filters-sidebar-price-thumb-shadow);
-    transition: box-shadow .15s cubic-bezier(.4, 0, .2, 1);
-
-    &:hover {
-      box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
-    }
-
-    &:focus {
-      box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
-      outline: none;
-    }
-
-    &:active {
-      box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
-    }
+    transition: box-shadow .15s cubic-bezier(.4, 0, .2, 1), background-color .15s cubic-bezier(.4, 0, .2, 1);
+    outline: none;
   }
 
   &::-webkit-slider-runnable-track {
@@ -313,5 +293,19 @@
     width: 100%;
     height: var(--filters-sidebar-price-track-height-slider);
     background: transparent;
+  }
+
+  &:hover::-webkit-slider-thumb,
+  &:focus::-webkit-slider-thumb,
+  &:active::-webkit-slider-thumb {
+    box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
+    background: var(--filters-sidebar-price-thumb-hover-bg);
+  }
+
+  &:hover::-moz-range-thumb,
+  &:focus::-moz-range-thumb,
+  &:active::-moz-range-thumb {
+    box-shadow: var(--filters-sidebar-price-thumb-hover-shadow);
+    background: var(--filters-sidebar-price-thumb-hover-bg);
   }
 }

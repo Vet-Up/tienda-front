@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="c-filters-sidebar__content">
-        <div class="filter-section">
+        <div class="c-filter-section">
             <label class="c-filters-sidebar__section-title" >
                 Price
             </label>
@@ -30,13 +30,13 @@
             </div>
         </div>
 		<div class="c-filter-section">
-			<div class="c-filters-sidebar__filter-header" (click)="toggleCategories()">
+			<div class="filter-header" (click)="toggleCategories()">
 				<span>Categories</span>
 				<i class="bi bi-chevron-right" [class.rotated]="categoriesOpen"></i>
 			</div>
 
 			@if (categoriesOpen) {
-			<div class="c-filters-sidebar__filter-list">
+			<div class="filter-list">
 				@if (categories$ | async; as categories) {
 				@for (cat of categories; track cat.categoryId) {
 				<label>
